@@ -29,7 +29,11 @@
     </v-flex>
     <v-flex v-for="(item,index) in menuinfo.dinner" :key="index" xs12 md6>
       <v-hover>
-        <v-card slot-scope="{ hover }" :class="`ma-2 transparent elevation-${hover ? 12 : 0}`">
+        <v-card
+          @click="showMenu(item)"
+          slot-scope="{ hover }"
+          :class="`ma-2 transparent elevation-${hover ? 12 : 0}`"
+        >
           <v-card-title>
             <p class="item">{{item.name}}</p>
             <p class="item">{{item.price}}</p>
@@ -44,7 +48,11 @@
     </v-flex>
     <v-flex v-for="(item,index) in menuinfo.drink" :key="index" xs12 md6>
       <v-hover>
-        <v-card slot-scope="{ hover }" :class="`ma-2 transparent elevation-${hover ? 12 : 0}`">
+        <v-card
+          @click="showMenu(item)"
+          slot-scope="{ hover }"
+          :class="`ma-2 transparent elevation-${hover ? 12 : 0}`"
+        >
           <v-card-title>
             <p class="item">{{item.name}}</p>
             <p class="item">{{item.price}}</p>
