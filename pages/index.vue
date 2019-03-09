@@ -1,83 +1,104 @@
 <template>
-  <v-layout
-    column
-    justify-center
-    align-center
-  >
-    <v-flex
-      xs12
-      sm8
-      md6
-    >
-      <div class="text-xs-center">
-        <logo />
-        <vuetify-logo />
-      </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
+  <v-layout justify-center align-center wrap>
+    <v-flex xs12>
+      <v-img :src="top_image_src" aspect-ratio="1.8"></v-img>
+    </v-flex>
+    <v-flex xs12>
+      <v-card class="elevation-0 transparent">
+        <v-card-title class="justify-center">
+          <h3 class="article_title stripe">About</h3>
         </v-card-title>
         <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-            >documentation</a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              title="chat"
-            >discord</a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              title="contribute"
-            >issue board</a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-          >Nuxt Documentation</a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-          >Nuxt GitHub</a>
+          <p class="article_content">Chiko★Spiceは伊豆の大仁で、おいしいカレーやスパイス料理を提供するカフェです。</p>
         </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            flat
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
+      </v-card>
+    </v-flex>
+    <v-flex xs12>
+      <v-card xs12 class="elevation-0 transparent">
+        <v-card-title class="justify-center">
+          <h3 class="article_title stripe">Concept</h3>
+        </v-card-title>
+        <v-card-text>
+          <p class="article_content">コンセプトコンセプトコンセプトコンセプトコンセプト</p>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex xs12>
+      <v-card xs12 class="elevation-0 transparent">
+        <v-card-title class="justify-center">
+          <h3 class="article_title stripe">Infomation</h3>
+        </v-card-title>
+        <v-card-text>
+          <table class="article_content">
+            <tr>
+              <th>Name</th>
+              <td>Chiko★Spice</td>
+            </tr>
+            <tr>
+              <th>Address</th>
+              <td>〒410-0011 静岡県伊豆の国市大仁600</td>
+            </tr>
+            <tr>
+              <th>TEL</th>
+              <td>0000-00-0000</td>
+            </tr>
+            <tr>
+              <th>LunchTime</th>
+              <td>10:00 - 15:00</td>
+            </tr>
+            <tr>
+              <th>DinnerTime</th>
+              <td>17:00 - 21:00</td>
+            </tr>
+            <tr>
+              <th>Horiday</th>
+              <td>毎週 水曜日</td>
+            </tr>
+          </table>
+        </v-card-text>
       </v-card>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+// import Top from '~/assets/img/top.jpg'
 
 export default {
-  components: {
-    Logo,
-    VuetifyLogo
+  components: {},
+  data() {
+    return {
+      topimage: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+      top_image_src: require('~/assets/img/top.jpg'),
+      img2: 'https://picsum.photos/500/300?image=3'
+    }
   }
 }
 </script>
+<style>
+table {
+  width: 100%;
+}
+
+table th {
+  position: relative;
+  text-align: left;
+  width: 20%;
+}
+
+table th:after {
+  display: block;
+  content: '';
+  width: 30px;
+  height: 2px;
+  background-color: #333;
+  position: absolute;
+  top: calc(50% - 1px);
+  right: 20px;
+}
+
+table td {
+  text-align: left;
+  width: 85%;
+}
+</style>
