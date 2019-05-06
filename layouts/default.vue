@@ -2,17 +2,17 @@
   <v-app>
     <v-toolbar dark app>
       <v-toolbar-title class="headline">
-        <span class="px-2">Chiko★Spice</span>
+        <span class="px-2">Chico★Spice</span>
       </v-toolbar-title>
-      <v-spacer></v-spacer>
+      <v-spacer />
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn v-for="item in menu" :key="item.title" @click="$router.push(item.link)" flat>
+        <v-btn v-for="item in menu" :key="item.title" flat @click="$router.push(item.link)">
           <v-icon class="pr-1">{{ item.icon }}</v-icon>
           {{ item.title }}
         </v-btn>
       </v-toolbar-items>
       <v-menu class="hidden-md-and-up">
-        <v-toolbar-side-icon slot="activator"></v-toolbar-side-icon>
+        <v-toolbar-side-icon slot="activator" />
         <v-list>
           <v-list-tile v-for="item in menu" :key="item.title" :to="item.link">
             <v-list-tile-content>
@@ -27,10 +27,10 @@
     </v-toolbar>
     <v-content>
       <v-container>
-        <nuxt/>
+        <nuxt />
       </v-container>
     </v-content>
-    <Footer/>
+    <Footer />
   </v-app>
 </template>
 
@@ -68,6 +68,12 @@ export default {
   letter-spacing: 4px;
   font-size: 17px;
   line-height: 35px;
+  background-color: #fafafa;
+}
+.article_content_xs {
+  letter-spacing: 2px;
+  font-size: 14px;
+  line-height: 26px;
   background-color: #fafafa;
 }
 .stripe {

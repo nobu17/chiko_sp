@@ -4,10 +4,10 @@
       <v-card-title class="justify-center">
         <h3 class="article_title stripe">Access</h3>
       </v-card-title>
-      <v-card-text><p class="article_content">{{description}}</p></v-card-text>
+      <v-card-text><p class="article_content">{{ description }}</p></v-card-text>
     </v-card>
     <v-flex class xs12>
-      <div class="ggmap ml-5" v-html="mapurl"></div>
+      <div class="ggmap ml-5" v-html="mapurl" />
     </v-flex>
   </v-layout>
 </template>

@@ -1,7 +1,7 @@
 <template>
   <v-layout justify-center align-center wrap>
     <v-flex xs12>
-      <v-img :src="top_image_src" aspect-ratio="1.8"></v-img>
+      <v-img :src="top_image_src" aspect-ratio="1.8" />
     </v-flex>
     <v-flex xs12>
       <v-card class="elevation-0 transparent">
@@ -9,7 +9,7 @@
           <h3 class="article_title stripe">About</h3>
         </v-card-title>
         <v-card-text>
-          <p class="article_content">Chiko★Spiceは伊豆の大仁で、おいしいカレーやスパイス料理を提供するカフェです。</p>
+          <p :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}">Chiko★Spiceは伊豆の大仁で、おいしいカレーやスパイス料理を提供するカフェです。</p>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -19,7 +19,7 @@
           <h3 class="article_title stripe">Concept</h3>
         </v-card-title>
         <v-card-text>
-          <p class="article_content">コンセプトコンセプトコンセプトコンセプトコンセプト</p>
+          <p :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}">コンセプトコンセプトコンセプトコンセプトコンセプト</p>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -29,11 +29,7 @@
           <h3 class="article_title stripe">Infomation</h3>
         </v-card-title>
         <v-card-text>
-          <table class="article_content">
-            <tr>
-              <th>Name</th>
-              <td>Chiko★Spice</td>
-            </tr>
+          <table :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}">
             <tr>
               <th>Address</th>
               <td>〒410-0011 静岡県伊豆の国市大仁600</td>
@@ -89,7 +85,7 @@ table th {
 table th:after {
   display: block;
   content: '';
-  width: 30px;
+  width: 10px;
   height: 2px;
   background-color: #333;
   position: absolute;

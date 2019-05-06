@@ -3,10 +3,10 @@
     <v-dialog v-model="dialog" max-width="1000" content content-class="centered-dialog">
       <v-card>
         <v-card-title>
-          <p class="item">{{name}}</p>
-          <p class="item">{{price}}</p>
+          <p class="item">{{ name }}</p>
+          <p class="item">{{ price }}</p>
         </v-card-title>
-        <v-img :src="imagesrc" aspect-ratio="1.8"></v-img>
+        <v-img :src="imagesrc" aspect-ratio="1.8" />
         <v-card-actions>{{ message }}</v-card-actions>
       </v-card>
     </v-dialog>
