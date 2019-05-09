@@ -1,5 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/firestore'
+import 'firebase/auth'
+
 import { AppEnv } from '../config/appenv'
 
 // Your web app's Firebase configuration
@@ -12,6 +14,7 @@ const firebaseConfig = {
   messagingSenderId: AppEnv.FIREBASE_MESSAGING_SENDER_ID,
   appId: AppEnv.FIREBASE_APP_ID
 }
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig)
 

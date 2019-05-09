@@ -19,7 +19,7 @@
             <p class="item">{{ item.name }}</p>
             <p class="item">{{ item.price }}</p>
           </v-card-title>
-          <v-img :src="item.src" aspect-ratio="2" />
+          <v-img :src="item.src" aspect-ratio="2"/>
           <v-card-actions class="message">{{ item.message }}</v-card-actions>
         </v-card>
       </v-hover>
@@ -38,7 +38,7 @@
             <p class="item">{{ item.name }}</p>
             <p class="item">{{ item.price }}</p>
           </v-card-title>
-          <v-img :src="item.src" aspect-ratio="2" />
+          <v-img :src="item.src" aspect-ratio="2"/>
           <v-card-actions class="message">{{ item.message }}</v-card-actions>
         </v-card>
       </v-hover>
@@ -57,7 +57,7 @@
             <p class="item">{{ item.name }}</p>
             <p class="item">{{ item.price }}</p>
           </v-card-title>
-          <v-img :src="item.src" aspect-ratio="2" />
+          <v-img :src="item.src" aspect-ratio="2"/>
           <v-card-actions class="message">{{ item.message }}</v-card-actions>
         </v-card>
       </v-hover>
@@ -78,13 +78,16 @@
         <v-icon>keyboard_arrow_up</v-icon>
       </v-btn>
     </v-fab-transition>
-    <menudialog ref="menudialog" />
+    <menudialog ref="menudialog"/>
   </v-layout>
 </template>
 
 <script>
 import menudialog from '~/components/menudialog.vue'
 export default {
+  meta: {
+    requiredAuth: true
+  },
   components: {
     menudialog
   },
