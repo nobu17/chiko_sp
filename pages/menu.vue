@@ -8,7 +8,10 @@
     <v-flex xs12>
       <p id="lunch" class="article_title stripe">Lunch Menu</p>
     </v-flex>
-    <v-flex v-for="(item,index) in menuinfo.lunch" :key="index" xs12 md6>
+    <v-flex xs12>
+      <loadingPartialScreen :isLoading="isLoading"/>
+    </v-flex>
+    <v-flex v-for="(item) in lunchMenu" :key="item.id" xs12 md6>
       <v-hover>
         <v-card
           slot-scope="{ hover }"
@@ -17,17 +20,20 @@
         >
           <v-card-title>
             <p class="item">{{ item.name }}</p>
-            <p class="item">{{ item.price }}</p>
+            <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
           </v-card-title>
-          <v-img :src="item.src" aspect-ratio="2"/>
-          <v-card-actions class="message">{{ item.message }}</v-card-actions>
+          <v-img :src="item.img | imageFilter" aspect-ratio="2"/>
+          <v-card-actions class="message">{{ item.comment }}</v-card-actions>
         </v-card>
       </v-hover>
     </v-flex>
     <v-flex xs12>
       <p id="dinner" class="article_title stripe">Dinner Menu</p>
     </v-flex>
-    <v-flex v-for="(item,index) in menuinfo.dinner" :key="index" xs12 md6>
+    <v-flex xs12>
+      <loadingPartialScreen :isLoading="isLoading"/>
+    </v-flex>
+    <v-flex v-for="(item) in dinnerMenu" :key="item.id" xs12 md6>
       <v-hover>
         <v-card
           slot-scope="{ hover }"
@@ -36,17 +42,20 @@
         >
           <v-card-title>
             <p class="item">{{ item.name }}</p>
-            <p class="item">{{ item.price }}</p>
+            <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
           </v-card-title>
-          <v-img :src="item.src" aspect-ratio="2"/>
-          <v-card-actions class="message">{{ item.message }}</v-card-actions>
+          <v-img :src="item.img | imageFilter" aspect-ratio="2"/>
+          <v-card-actions class="message">{{ item.comment }}</v-card-actions>
         </v-card>
       </v-hover>
     </v-flex>
     <v-flex xs12>
       <p id="drink" class="article_title stripe">Drink Menu</p>
     </v-flex>
-    <v-flex v-for="(item,index) in menuinfo.drink" :key="index" xs12 md6>
+    <v-flex xs12>
+      <loadingPartialScreen :isLoading="isLoading"/>
+    </v-flex>
+    <v-flex v-for="(item) in drinkMenu" :key="item.id" xs12 md6>
       <v-hover>
         <v-card
           slot-scope="{ hover }"
@@ -55,10 +64,10 @@
         >
           <v-card-title>
             <p class="item">{{ item.name }}</p>
-            <p class="item">{{ item.price }}</p>
+            <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
           </v-card-title>
-          <v-img :src="item.src" aspect-ratio="2"/>
-          <v-card-actions class="message">{{ item.message }}</v-card-actions>
+          <v-img :src="item.img | imageFilter" aspect-ratio="2"/>
+          <v-card-actions class="message">{{ item.comment }}</v-card-actions>
         </v-card>
       </v-hover>
     </v-flex>
@@ -84,96 +93,35 @@
 
 <script>
 import menudialog from '~/components/menudialog.vue'
+import loadingPartialScreen from '~/components/loadingPartialScreen'
 export default {
   meta: {
     requiredAuth: true
   },
   components: {
-    menudialog
+    menudialog,
+    loadingPartialScreen
+  },
+  async mounted() {
+    this.isLoading = true
+    await this.$store.dispatch('menu/readAllMeenu')
+    this.isLoading = false
+  },
+  computed: {
+    lunchMenu() {
+      return this.$store.getters['menu/lunchMenu']
+    },
+    dinnerMenu() {
+      return this.$store.getters['menu/dinnerMenu']
+    },
+    drinkMenu() {
+      return this.$store.getters['menu/drinkMenu']
+    }
   },
   data() {
     return {
       scrollButtonDisplied: false,
-      menuinfo: {
-        lunch: [
-          {
-            name: 'スパイスカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          },
-          {
-            name: 'キーマカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          },
-          {
-            name: 'バシャバシャカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          },
-          {
-            name: '普通のカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          }
-        ],
-        dinner: [
-          {
-            name: 'スパイスカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          },
-          {
-            name: 'キーマカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          },
-          {
-            name: 'バシャバシャカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          },
-          {
-            name: '普通のカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          }
-        ],
-        drink: [
-          {
-            name: 'スパイスカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          },
-          {
-            name: 'キーマカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          },
-          {
-            name: 'バシャバシャカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          },
-          {
-            name: '普通のカレー',
-            src: require('~/assets/img/top.jpg'),
-            message: 'おいしいカレーです。',
-            price: '￥700'
-          }
-        ]
-      }
+      isLoading: false
     }
   },
   methods: {
@@ -193,7 +141,7 @@ export default {
       elem.scrollIntoView()
     },
     showMenu(item) {
-      this.$refs.menudialog.open(item.name, item.price, item.message, item.src)
+      this.$refs.menudialog.open(item.name, item.price, item.comment, item.img)
     }
   }
 }

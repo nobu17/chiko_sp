@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import firebaseAuthClient from '../lib/firebaseAuthClient'
+// import firebaseAuthClient from '../lib/firebaseAuthClient'
 import loadingScreen from '../components/loadingScreen'
 import Footer from '~/components/footer.vue'
 export default {
@@ -46,11 +46,11 @@ export default {
     Footer,
     loadingScreen
   },
-  async mounted() {
+  mounted() {
     console.log('create start')
-    this.isLoading = true
-    await firebaseAuthClient.init()
-    this.isLoading = false
+    // this.isLoading = true
+    // await firebaseAuthClient.init()
+    // this.isLoading = false
     console.log('create fin')
     console.log('isLogined', this.isLogined)
   },
@@ -85,7 +85,7 @@ export default {
         { title: 'blog', icon: 'beenhere', link: '/blog' },
         {
           title: 'logout',
-          icon: 'beenhere',
+          icon: 'lock_open',
           link: '/logout',
           isNeedLogin: true
         }

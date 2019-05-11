@@ -47,11 +47,9 @@ export default {
   },
   created() {},
   mounted() {
-    console.log('create start')
     // this.isLoading = true
     // await firebaseAuthClient.init()
     // this.isLoading = false
-    console.log('create fin')
     console.log('isLogined', this.isLogined)
     if (this.isLogined) {
       this.goNextPage()
