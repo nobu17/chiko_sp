@@ -66,7 +66,7 @@
             <p class="item">{{ item.name }}</p>
             <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
           </v-card-title>
-          <v-img :src="item.img | imageFilter" aspect-ratio="2"/>
+          <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
           <v-card-actions class="message">{{ item.comment }}</v-card-actions>
         </v-card>
       </v-hover>
@@ -95,16 +95,13 @@
 import menudialog from '~/components/menudialog.vue'
 import loadingPartialScreen from '~/components/loadingPartialScreen'
 export default {
-  meta: {
-    requiredAuth: true
-  },
   components: {
     menudialog,
     loadingPartialScreen
   },
   async mounted() {
     this.isLoading = true
-    await this.$store.dispatch('menu/readAllMeenu')
+    await this.$store.dispatch('menu/readAllMenu')
     this.isLoading = false
   },
   computed: {
@@ -127,7 +124,7 @@ export default {
   methods: {
     onScroll() {
       const top = window.pageYOffset
-      if (top > 300) {
+      if (top > 250) {
         this.scrollButtonDisplied = true
       } else {
         this.scrollButtonDisplied = false
@@ -147,7 +144,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .item {
   margin: 3px;
   letter-spacing: 4px;

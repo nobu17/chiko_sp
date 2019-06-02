@@ -14,11 +14,12 @@ export default async ({ store, route, redirect }) => {
     await firebaseAuthClient.logout()
     return redirect('/')
   }
-
-  const requiredAuth = route.meta[0].requiredAuth
-  console.log('requiredAuth', requiredAuth)
-  if (!isAuthed && requiredAuth && route.path !== '/login') {
-    const query = route.path ? '?redirect=' + route.path : ''
-    return redirect('/login' + query)
+  if (route.meta[0]) {
+    const requiredAuth = route.meta[0].requiredAuth
+    console.log('requiredAuth', requiredAuth)
+    if (!isAuthed && requiredAuth && route.path !== '/login') {
+      const query = route.path ? '?redirect=' + route.path : ''
+      return redirect('/login' + query)
+    }
   }
 }
