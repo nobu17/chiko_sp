@@ -26,6 +26,14 @@
 
 <script>
 export default {
+  meta: {
+    requiredAuth: true
+  },
+  head() {
+    return {
+      title: '管理'
+    }
+  },
   methods: {
     changePage(url) {
       if (!url || url === '') {

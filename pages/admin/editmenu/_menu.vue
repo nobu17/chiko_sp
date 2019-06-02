@@ -50,6 +50,14 @@ export default {
     loadingScreen,
     editMenuDialog
   },
+  meta: {
+    requiredAuth: true
+  },
+  head() {
+    return {
+      title: 'メニュー編集'
+    }
+  },
   async mounted() {
     this.isLoading = true
     this.menuType = this.$nuxt.$route.params.menu

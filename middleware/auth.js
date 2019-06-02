@@ -1,5 +1,6 @@
 import firebaseAuthClient from '../lib/firebaseAuthClient'
 export default async ({ store, route, redirect }) => {
+  console.log('meta', route.meta)
   if (['/'].includes(route.path)) {
     return
   }
