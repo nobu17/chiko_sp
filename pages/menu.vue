@@ -22,7 +22,7 @@
             <p class="item">{{ item.name }}</p>
             <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
           </v-card-title>
-          <v-img :src="item.img | imageFilter" aspect-ratio="2"/>
+          <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
           <v-card-actions class="message">{{ item.comment }}</v-card-actions>
         </v-card>
       </v-hover>
@@ -44,7 +44,7 @@
             <p class="item">{{ item.name }}</p>
             <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
           </v-card-title>
-          <v-img :src="item.img | imageFilter" aspect-ratio="2"/>
+          <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
           <v-card-actions class="message">{{ item.comment }}</v-card-actions>
         </v-card>
       </v-hover>
@@ -138,7 +138,12 @@ export default {
       elem.scrollIntoView()
     },
     showMenu(item) {
-      this.$refs.menudialog.open(item.name, item.price, item.comment, item.img)
+      this.$refs.menudialog.open(
+        item.name,
+        item.price,
+        item.comment,
+        item.img.fileUrl
+      )
     }
   }
 }

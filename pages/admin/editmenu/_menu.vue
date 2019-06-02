@@ -6,6 +6,9 @@
           <v-btn color="info" @click="addNew()">新規作成</v-btn>
           <v-btn color="info" @click="cancel()">管理Topへ戻る</v-btn>
         </v-flex>
+        <v-flex class="mb-2" xs12>
+          <label>※順序はドラッグドロップで並び替え可能</label>
+        </v-flex>
         <v-flex xs12>
           <v-list>
             <draggable v-model="editTargetMenu">

@@ -260,34 +260,25 @@ export const actions = {
     const menu = await menuClient.readMenu()
     commit('setEditMenu', { menu: menu })
   },
-  async readLunchMenu({ commit }, { isEditMode }) {
+  async readLunchMenu({ commit }) {
     let lunch = await firebaseDbClient.getLunchMenu()
     if (lunch) {
       lunch = imageUtl.getReLocateImage(lunch)
       commit('setLunchMenu', lunch)
     }
-    if (isEditMode) {
-      commit('setEditMenu', { menu: lunch, editMenuType: 'lunch' })
-    }
   },
-  async readDinnerMenu({ commit }, { isEditMode }) {
+  async readDinnerMenu({ commit }) {
     let dinner = await firebaseDbClient.getDinnerMenu()
     if (dinner) {
       dinner = imageUtl.getReLocateImage(dinner)
       commit('setDinnerMenu', dinner)
     }
-    if (isEditMode) {
-      commit('setEditMenu', { menu: dinner, editMenuType: 'dinner' })
-    }
   },
-  async readDrinkMenu({ commit }, { isEditMode }) {
+  async readDrinkMenu({ commit }) {
     let drink = await firebaseDbClient.getDrinkMenu()
     if (drink) {
       drink = imageUtl.getReLocateImage(drink)
       commit('setDrinkMenu', drink)
-    }
-    if (isEditMode) {
-      commit('setEditMenu', { menu: drink, editMenuType: 'drink' })
     }
   },
   async readAllMenu({ dispatch }) {
@@ -300,12 +291,7 @@ export const actions = {
 const imageUtl = {
   getReLocateImage(menu) {
     for (let i = 0; i < menu.length; i++) {
-      if (menu[i].img) {
-        menu[i].img = {
-          fileName: (i + 1).toString() + '.jpg',
-          fileUrl: menu[i].img
-        }
-      } else {
+      if (!menu[i].img) {
         menu[i].img = {
           fileName: '',
           fileUrl: ''
