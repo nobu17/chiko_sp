@@ -20,3 +20,9 @@ $ yarn run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+
+## deploy
+firebase logout
+firebase login
+firebase use chico-sp-website
+firebase deploy
