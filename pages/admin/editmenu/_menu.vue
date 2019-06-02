@@ -53,7 +53,6 @@ export default {
   async mounted() {
     this.isLoading = true
     this.menuType = this.$nuxt.$route.params.menu
-    // const param = { isEditMode: true }
     if (
       this.menuType === 'dinner' ||
       this.menuType === 'lunch' ||
@@ -82,7 +81,6 @@ export default {
           menuList: val
         })
         this.isLoading = false
-        // this.$store.commit('menu/setEditMenu', val)
       }
     }
   },
@@ -116,7 +114,6 @@ export default {
           index: index
         })
         this.isLoading = false
-        // this.$store.commit('menu/deleteMenu', { index: index })
       }
     },
     async editMenu(item, index) {
@@ -129,7 +126,6 @@ export default {
           menu: data
         })
         this.isLoading = false
-        // this.$store.commit('menu/editMenu', { index: index, item: data })
       }
     },
     cancel() {
