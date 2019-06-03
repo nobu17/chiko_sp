@@ -52,16 +52,20 @@ export default {
     console.log('value', this.value)
     if (this.value) {
       this.id = this.value.id
+      this.beforeImg = this.value.beforeImg
       this.img = this.value.img
       this.name = this.value.name
       this.price = this.value.price
       this.comment = this.value.comment
+      this.disporder = this.value.disporder
     } else {
       this.id = ''
+      this.beforeImg = { fileName: '', fileUrl: '' }
       this.img = { fileName: '', fileUrl: '' }
       this.name = ''
       this.price = 0
       this.comment = ''
+      this.disporder = 0
     }
     this.setfocus()
   },
@@ -89,7 +93,9 @@ export default {
           name: this.name,
           price: this.price,
           comment: this.comment,
-          img: this.img
+          img: this.img,
+          disporder: this.disporder,
+          beforeImg: this.beforeImg
         }
         this.$emit('submitted', menu)
       }
