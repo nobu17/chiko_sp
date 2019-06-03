@@ -78,7 +78,6 @@ export default {
       this.$router.push('/')
       return
     }
-    console.log('ed', this.editTargetMenu)
     this.isLoading = false
   },
   computed: {

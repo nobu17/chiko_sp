@@ -158,7 +158,7 @@ export const mutations = {
     // add temp id for list
     item.id = menuUitl.getTempUid()
     state.editMenu.push(item)
-    menuUitl.reassingOrderNo(state.editMenu)
+    // menuUitl.reassingOrderNo(state.editMenu)
   },
   editMenu(state, { index, item }) {
     state.editMenu.splice(index, 1, item)
@@ -166,7 +166,6 @@ export const mutations = {
   },
   deleteMenu(state, { index }) {
     state.editMenu.splice(index, 1)
-    menuUitl.reassingOrderNo(state.editMenu)
   },
   setEditMenuType(state, { editMenuType }) {
     state.editMenuType = editMenuType
@@ -186,7 +185,7 @@ export const actions = {
       }
       // DB削除
       await menuClient.deleteMenu(target)
-      commit('deleteMenu', index)
+      commit('deleteMenu', { index: index })
       // オーダー更新
       console.log('update order start')
       await dispatch('updateDispOrderAsync', { menuList: state.editMenu })
@@ -239,6 +238,7 @@ export const actions = {
   async updateDispOrderAsync({ commit, dispatch, state }, { menuList }) {
     commit('setEditMenu', { menu: menuList })
     // オーダー再計算して変更されたものを格納
+    console.log('before change order', menuList)
     const changedItems = menuUitl.reassingOrderNo(
       JSON.parse(JSON.stringify(menuList))
     )
@@ -311,6 +311,7 @@ const menuUitl = {
   reassingOrderNo(menu) {
     const changedItem = []
     let order = 1
+    console.log('before change order', menu)
     for (const me of menu) {
       if (me.disporder !== order) {
         me.disporder = order
@@ -318,6 +319,8 @@ const menuUitl = {
       }
       order++
     }
+    console.log('after change order', menu)
+    console.log('changed order items', changedItem)
     return changedItem
   }
 }
