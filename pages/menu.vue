@@ -163,7 +163,7 @@ export default {
 }
 .message {
   letter-spacing: 2px;
-  font-size: 14px;
+  font-size: 17px;
 }
 .topButton {
   margin-bottom: 40px;

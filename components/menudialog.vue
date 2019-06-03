@@ -3,11 +3,11 @@
     <v-dialog v-model="dialog" max-width="1000" content content-class="centered-dialog">
       <v-card>
         <v-card-title>
-          <p class="item">{{ name }}</p>
+          <p class="item mr-4">{{ name }}</p>
           <p class="item">{{ price | commaFilter | yenFilter }}</p>
         </v-card-title>
         <v-img :src="imagesrc | imageFilter" aspect-ratio="1.8"/>
-        <v-card-actions>{{ message }}</v-card-actions>
+        <v-card-actions class='item'>{{ message }}</v-card-actions>
       </v-card>
     </v-dialog>
   </v-layout>
@@ -45,3 +45,11 @@ export default {
   }
 }
 </script>
+<style scoped>
+.item {
+  margin: 3px;
+  letter-spacing: 4px;
+  font-size: 17px;
+  line-height: 18px;
+}
+</style>
