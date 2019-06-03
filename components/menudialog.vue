@@ -4,9 +4,9 @@
       <v-card>
         <v-card-title>
           <p class="item">{{ name }}</p>
-          <p class="item">{{ price }}</p>
+          <p class="item">{{ price | commaFilter | yenFilter }}</p>
         </v-card-title>
-        <v-img :src="imagesrc" aspect-ratio="1.8" />
+        <v-img :src="imagesrc | imageFilter" aspect-ratio="1.8"/>
         <v-card-actions>{{ message }}</v-card-actions>
       </v-card>
     </v-dialog>
