@@ -11,7 +11,7 @@
         <v-card-text>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >Chiko★Spiceは伊豆の大仁で、おいしいカレーやスパイス料理を提供するカフェです。</p>
+          >Chico★Spiceは伊豆の大仁で、おいしいカレーやスパイス料理を提供するカフェです。</p>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -37,24 +37,19 @@
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
           >
             <tr>
-              <th>Address</th>
               <td>〒410-0011 静岡県伊豆の国市大仁600</td>
             </tr>
             <tr>
-              <th>TEL</th>
-              <td>0000-00-0000</td>
+              <td>電話番号：0000-00-0000</td>
             </tr>
             <tr>
-              <th>LunchTime</th>
-              <td>10:00 - 15:00</td>
+              <td>ランチタイム：10:00 - 15:00</td>
             </tr>
             <tr>
-              <th>DinnerTime</th>
-              <td>17:00 - 21:00</td>
+              <td>ディナータイム：17:00 - 21:00</td>
             </tr>
             <tr>
-              <th>Horiday</th>
-              <td>毎週 水曜日</td>
+              <td>定休日：毎週 水曜日</td>
             </tr>
           </table>
         </v-card-text>
@@ -101,7 +96,7 @@ table th:after {
 }
 
 table td {
-  text-align: left;
+  text-align: center;
   width: 85%;
 }
 </style>
