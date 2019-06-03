@@ -7,7 +7,11 @@
           <v-btn color="info" @click="cancel()">管理Topへ戻る</v-btn>
         </v-flex>
         <v-flex class="mb-2" xs12>
-          <label>※順序はドラッグドロップで並び替え可能</label>
+          <label>
+            ※一覧から選択で編集、新規作成ボタンで新規登録
+            <br>※ゴミ箱を選択で削除
+            <br>※順序はドラッグドロップで並び替え可能
+          </label>
         </v-flex>
         <v-flex xs12>
           <v-list>

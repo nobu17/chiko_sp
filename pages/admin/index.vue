@@ -2,7 +2,7 @@
   <v-container :class="{'ma-0 pa-0': $vuetify.breakpoint.smAndDown}">
     <v-layout wrap>
       <v-flex xs12>
-        <h3 class="title-head text-md-center text-xs-center mt-3 mb-4">
+        <h3 class="menuTitle title-head text-md-center text-xs-center mt-3 mb-4">
           <v-icon class="mr-3" color="red" size="45">attach_money</v-icon>管理ページ
         </h3>
       </v-flex>
@@ -69,7 +69,7 @@ export default {
 <style scoped>
 .menuTitle {
   letter-spacing: 2px;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 35px;
   background-color: transparent;
 }

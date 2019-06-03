@@ -135,7 +135,12 @@ export default {
     },
     scroll(name) {
       const elem = document.getElementById(name)
-      elem.scrollIntoView()
+      console.log('pos', elem.offsetTop)
+      window.scrollTo({
+        left: elem.offsetLeft,
+        top: elem.offsetTop,
+        behavior: 'smooth'
+      })
     },
     showMenu(item) {
       this.$refs.menudialog.open(

@@ -1,5 +1,5 @@
 const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
-const pkg = require('./package')
+// const pkg = require('./package')
 
 require('dotenv').config()
 
@@ -10,11 +10,16 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'chico spice',
+    title: 'chico spice★静岡県伊豆の国市のスパイスカレー屋',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: pkg.description }
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          '静岡県伊豆の国市(大仁、韮山、伊豆長岡、修善寺)でおいしいスパイスカレーを提供するお店です。'
+      }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
