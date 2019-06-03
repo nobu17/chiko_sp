@@ -19,7 +19,7 @@
           @click="showMenu(item)"
         >
           <v-card-title>
-            <p class="item">{{ item.name }}</p>
+            <p class="item mr-4">{{ item.name }}</p>
             <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
           </v-card-title>
           <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
@@ -41,7 +41,7 @@
           @click="showMenu(item)"
         >
           <v-card-title>
-            <p class="item">{{ item.name }}</p>
+            <p class="item mr-4">{{ item.name }}</p>
             <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
           </v-card-title>
           <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
@@ -63,7 +63,7 @@
           @click="showMenu(item)"
         >
           <v-card-title>
-            <p class="item">{{ item.name }}</p>
+            <p class="item mr-4">{{ item.name }}</p>
             <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
           </v-card-title>
           <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
