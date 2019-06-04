@@ -40,6 +40,18 @@ const menuClient = {
     }
     return menu
   },
+  async readAllMenu() {
+    const lunch = await firebaseDbClient.getLunchMenu()
+    const dinner = await firebaseDbClient.getDinnerMenu()
+    const drink = await firebaseDbClient.getDrinkMenu()
+    return [lunch, dinner, drink]
+  },
+  async readAllCategories() {
+    const lunch = await firebaseDbClient.getCategories('lunch')
+    const dinner = await firebaseDbClient.getCategories('dinner')
+    const drink = await firebaseDbClient.getCategories('drink')
+    return [lunch, dinner, drink]
+  },
   async addMenu(menu) {
     menu.isNewItem = true
     await this.editMenu(menu)
@@ -116,6 +128,7 @@ export const getters = {
   drinkMenu(state) {
     return state.drinkMenu
   },
+  categoriedMenu(state) {},
   editMenu(state) {
     return state.editMenu
   },
@@ -274,45 +287,22 @@ export const actions = {
     const categoeirs = await menuClient.readCategories()
     commit('setEditCategories', { editCategories: categoeirs })
   },
-  async readLunchMenu({ commit }) {
-    let lunch = await firebaseDbClient.getLunchMenu()
-    if (lunch) {
-      lunch = imageUtl.getReLocateImage(lunch)
-      commit('setLunchMenu', lunch)
-    }
-  },
-  async readDinnerMenu({ commit }) {
-    let dinner = await firebaseDbClient.getDinnerMenu()
-    if (dinner) {
-      dinner = imageUtl.getReLocateImage(dinner)
-      commit('setDinnerMenu', dinner)
-    }
-  },
-  async readDrinkMenu({ commit }) {
-    let drink = await firebaseDbClient.getDrinkMenu()
-    if (drink) {
-      drink = imageUtl.getReLocateImage(drink)
-      commit('setDrinkMenu', drink)
-    }
-  },
-  async readAllMenu({ dispatch }) {
-    await dispatch('readLunchMenu')
-    await dispatch('readDinnerMenu')
-    await dispatch('readDrinkMenu')
-  }
-}
-
-const imageUtl = {
-  getReLocateImage(menu) {
-    for (let i = 0; i < menu.length; i++) {
-      if (!menu[i].img) {
-        menu[i].img = {
-          fileName: '',
-          fileUrl: ''
-        }
-      }
-    }
-    return menu
+  async readAllMenu({ commit }) {
+    const menuList = await menuClient.readAllMenu()
+    const categories = await menuClient.readAllCategories()
+    // カテゴリ別に分類
+    commit(
+      'setLunchMenu',
+      menuUitl.getCategorizedMenu(menuList[0], categories[0])
+    )
+    commit(
+      'setDinnerMenu',
+      menuUitl.getCategorizedMenu(menuList[1], categories[1])
+    )
+    commit(
+      'setDrinkMenu',
+      menuUitl.getCategorizedMenu(menuList[2], categories[2])
+    )
   }
 }
 
@@ -325,7 +315,6 @@ const menuUitl = {
   reassingOrderNo(menu) {
     const changedItem = []
     let order = 1
-    console.log('before change order', menu)
     for (const me of menu) {
       if (me.disporder !== order) {
         me.disporder = order
@@ -333,8 +322,17 @@ const menuUitl = {
       }
       order++
     }
-    console.log('after change order', menu)
-    console.log('changed order items', changedItem)
     return changedItem
+  },
+  getCategorizedMenu(menuList, categories) {
+    const categorizedList = []
+    for (const category of categories) {
+      const catList = menuList.filter(x => x.category === category)
+      if (catList.length > 0) {
+        categorizedList.push({ category: category, menu: catList })
+      }
+    }
+    console.log('categorizedList', categorizedList)
+    return categorizedList
   }
 }
