@@ -75,6 +75,8 @@ export default {
         this.isLoading = false
         if (res) {
           this.goNextPage()
+        } else {
+          this.errorMessage = 'ログインに失敗しました。'
         }
       }
     },
