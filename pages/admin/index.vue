@@ -14,7 +14,7 @@
                 <v-list-tile-avatar>
                   <v-icon>{{ menu.icon }}</v-icon>
                 </v-list-tile-avatar>
-                <v-list-tile-content class="menuTitle">{{menu.text}}</v-list-tile-content>
+                <v-list-tile-content :class="{'menuTitle_xs': $vuetify.breakpoint.smAndDown, 'menuTitle': $vuetify.breakpoint.mdAndUp}">{{menu.text}}</v-list-tile-content>
               </v-list-tile>
             </template>
           </v-list>
@@ -71,6 +71,12 @@ export default {
   letter-spacing: 2px;
   font-size: 25px;
   line-height: 35px;
+  background-color: transparent;
+}
+.menuTitle_xs {
+  letter-spacing: 2px;
+  font-size: 15px;
+  line-height: 20px;
   background-color: transparent;
 }
 </style>
