@@ -3,7 +3,7 @@
     <v-dialog v-model="dialog" persistent max-width="900" class="diag">
       <v-card>
         <v-container v-if="menu">
-          <MenuEditor ref="editor" v-model="menu" @submitted="submitted" @canceled="canceled"/>
+          <MenuEditor ref="editor" v-model="menu" :categories="editCategories" @submitted="submitted" @canceled="canceled"/>
         </v-container>
       </v-card>
     </v-dialog>
@@ -22,12 +22,14 @@ export default {
       dialog: false,
       resolve: null,
       reject: null,
-      menu: null
+      menu: null,
+      editCategories: []
     }
   },
   methods: {
-    open(menu) {
+    open(menu, editCategories) {
       this.menu = menu
+      this.editCategories = editCategories
       this.dialog = true
       // this.$refs.editor.setfocus()
       return new Promise((resolve, reject) => {

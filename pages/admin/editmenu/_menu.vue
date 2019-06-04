@@ -27,6 +27,7 @@
                 </v-list-tile-avatar>
                 <v-list-tile-content>
                   <v-list-tile-title v-text="menu.name" @click="editMenu(menu)"></v-list-tile-title>
+                  <v-list-tile-sub-title class="sub_title" v-text="menu.category"></v-list-tile-sub-title>
                 </v-list-tile-content>
                 <v-list-tile-action>
                   <v-btn outline color="red" @click="deleteMenu(index)">
@@ -81,6 +82,9 @@ export default {
     this.isLoading = false
   },
   computed: {
+    editCategories() {
+      return this.$store.getters['menu/editCategories']
+    },
     editTargetMenu: {
       get() {
         return this.$store.getters['menu/editMenu']
@@ -109,7 +113,8 @@ export default {
         }
       }
       const data = await this.$refs.editMenuDialog.open(
-        JSON.parse(JSON.stringify(target))
+        JSON.parse(JSON.stringify(target)),
+        this.editCategories
       )
       if (data) {
         console.log(data)
@@ -129,7 +134,8 @@ export default {
     },
     async editMenu(item, index) {
       const data = await this.$refs.editMenuDialog.open(
-        JSON.parse(JSON.stringify(item))
+        JSON.parse(JSON.stringify(item)),
+        this.editCategories
       )
       if (data) {
         this.isLoading = true
@@ -154,5 +160,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.sub_title {
+  font-size: 13px;
+}
 </style>

@@ -20,6 +20,7 @@
             required
           ></v-text-field>
           <v-text-field v-model="comment" :rules="commentRules" :counter="50" label="コメント" required></v-text-field>
+          <v-select :items="categories" v-model="category" :rules="categoryRules" label="カテゴリ"></v-select>
         </v-form>
       </v-flex>
     </v-layout>
@@ -46,6 +47,10 @@ export default {
     value: {
       type: Object,
       required: true
+    },
+    categories: {
+      type: Array,
+      required: true
     }
   },
   mounted() {
@@ -58,6 +63,7 @@ export default {
       this.price = this.value.price
       this.comment = this.value.comment
       this.disporder = this.value.disporder
+      this.category = this.value.category
     } else {
       this.id = ''
       this.beforeImg = { fileName: '', fileUrl: '' }
@@ -66,6 +72,7 @@ export default {
       this.price = 0
       this.comment = ''
       this.disporder = 0
+      this.category = ''
     }
     this.setfocus()
   },
@@ -95,7 +102,8 @@ export default {
           comment: this.comment,
           img: this.img,
           disporder: this.disporder,
-          beforeImg: this.beforeImg
+          beforeImg: this.beforeImg,
+          category: this.category
         }
         this.$emit('submitted', menu)
       }
@@ -138,6 +146,14 @@ export default {
           }
           if (v.length > 20) {
             return '説明は50文字以内で入力してください。。'
+          }
+          return true
+        }
+      ],
+      categoryRules: [
+        v => {
+          if (!v || v.trim() === '') {
+            return 'カテゴリを選択して下さい。'
           }
           return true
         }

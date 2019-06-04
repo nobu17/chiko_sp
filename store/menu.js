@@ -19,6 +19,10 @@ const menuClient = {
   async deleteImage(image) {
     await firebaseStorageClient.deleteMenuImage(this.menuType, image)
   },
+  async readCategories() {
+    const categories = await firebaseDbClient.getCategories(this.menuType)
+    return categories
+  },
   async readMenu() {
     let menu = []
     if (this.isEditDinner()) {
@@ -98,6 +102,7 @@ export const state = () => ({
   dinnerMenu: [],
   drinkMenu: [],
   editMenu: [],
+  editCategories: [],
   editMenuType: ''
 })
 
@@ -113,6 +118,9 @@ export const getters = {
   },
   editMenu(state) {
     return state.editMenu
+  },
+  editCategories(state) {
+    return state.editCategories
   },
   isEditDinner(state) {
     if (state.editMenuType === 'dinner') {
@@ -149,6 +157,9 @@ export const mutations = {
     if (editMenuType) {
       state.editMenuType = editMenuType
     }
+  },
+  setEditCategories(state, { editCategories }) {
+    state.editCategories = editCategories
   },
   setEditMenuWithReDispOrder(state, { editMenu }) {
     state.editMenu = editMenu
@@ -259,6 +270,9 @@ export const actions = {
     menuClient.init(editMenuType)
     const menu = await menuClient.readMenu()
     commit('setEditMenu', { menu: menu })
+    // read categories
+    const categoeirs = await menuClient.readCategories()
+    commit('setEditCategories', { editCategories: categoeirs })
   },
   async readLunchMenu({ commit }) {
     let lunch = await firebaseDbClient.getLunchMenu()
