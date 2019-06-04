@@ -1,12 +1,12 @@
 <template>
   <v-layout row justify-center>
-    <v-dialog v-model="dialog" max-width="1000" content content-class="centered-dialog">
+    <v-dialog v-model="dialog" max-width="830" content content-class="centered-dialog">
       <v-card>
         <v-card-title>
           <p class="item mr-4">{{ name }}</p>
           <p class="item">{{ price | commaFilter | yenFilter }}</p>
         </v-card-title>
-        <v-img :src="imagesrc | imageFilter" aspect-ratio="1.8"/>
+        <v-img :src="imagesrc | imageFilter" contain max-height="750" max-widh="800"/>
         <v-card-actions class='item'>{{ message }}</v-card-actions>
       </v-card>
     </v-dialog>
