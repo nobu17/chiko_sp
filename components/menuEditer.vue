@@ -120,6 +120,9 @@ export default {
       name: '',
       price: 0,
       comment: '',
+      disporder: 0,
+      beforeImg: '',
+      category: '',
       nameRules: [
         v => {
           if (!v || v.trim() === '') {

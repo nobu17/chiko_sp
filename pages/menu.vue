@@ -1,9 +1,39 @@
 <template>
   <v-layout v-scroll="onScroll" wrap>
     <v-flex xs12 class="justify-center">
+      <v-btn xs4 flat @click="scroll('morning')">Morning</v-btn>
       <v-btn xs4 flat @click="scroll('lunch')">Lunch</v-btn>
       <v-btn xs4 flat @click="scroll('dinner')">Dinner</v-btn>
-      <v-btn xs4 flat @click="scroll('drink')">Drink</v-btn>
+      <v-btn xs4 flat @click="scroll('takeout')">Take Out</v-btn>
+    </v-flex>
+    <v-flex xs12>
+      <p id="morning" class="article_title stripe">Morning Menu</p>
+    </v-flex>
+    <v-flex xs12>
+      <loadingPartialScreen :isLoading="isLoading"/>
+    </v-flex>
+    <v-flex xs12 v-for="(catItems) in morningMenus" :key="catItems.category + 'morning'">
+      <v-layout wrap>
+        <v-flex xs12>
+          <p class="category_title sub_stripe">{{ catItems.category }}</p>
+        </v-flex>
+        <v-flex v-for="(item) in catItems.menu" :key="item.id" xs12 md6>
+          <v-hover>
+            <v-card
+              slot-scope="{ hover }"
+              :class="`ma-2 transparent elevation-${hover ? 12 : 0}`"
+              @click="showMenu(item)"
+            >
+              <v-card-title>
+                <p class="item mr-4">{{ item.name }}</p>
+                <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
+              </v-card-title>
+              <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
+              <v-card-actions class="message">{{ item.comment }}</v-card-actions>
+            </v-card>
+          </v-hover>
+        </v-flex>
+      </v-layout>
     </v-flex>
     <v-flex xs12>
       <p id="lunch" class="article_title stripe">Lunch Menu</p>
@@ -11,7 +41,7 @@
     <v-flex xs12>
       <loadingPartialScreen :isLoading="isLoading"/>
     </v-flex>
-    <v-flex xs12 v-for="(catItems) in lunchMenu" :key="catItems.category">
+    <v-flex xs12 v-for="(catItems) in lunchMenus" :key="catItems.category+ 'lunch'">
       <v-layout wrap>
         <v-flex xs12>
           <p class="category_title sub_stripe">{{ catItems.category }}</p>
@@ -40,7 +70,7 @@
     <v-flex xs12>
       <loadingPartialScreen :isLoading="isLoading"/>
     </v-flex>
-    <v-flex xs12 v-for="(catItems) in dinnerMenu" :key="catItems.category">
+    <v-flex xs12 v-for="(catItems) in dinnerMenus" :key="catItems.category+ 'dinner'">
       <v-layout wrap>
         <v-flex xs12>
           <p class="category_title sub_stripe">{{ catItems.category }}</p>
@@ -65,32 +95,32 @@
       </v-layout>
     </v-flex>
     <v-flex xs12>
-      <p id="drink" class="article_title stripe">Drink Menu</p>
+      <p id="takeout" class="article_title stripe">TakeOut Menu</p>
     </v-flex>
     <v-flex xs12>
       <loadingPartialScreen :isLoading="isLoading"/>
     </v-flex>
-    <v-flex xs12 v-for="(catItems) in drinkMenu" :key="catItems.category">
+    <v-flex xs12 v-for="(catItems) in takeoutMenus" :key="catItems.category+ 'takeout'">
       <v-layout wrap>
         <v-flex xs12>
           <p class="category_title sub_stripe">{{ catItems.category }}</p>
         </v-flex>
-          <v-flex v-for="(item) in catItems.menu" :key="item.id" xs12 md6>
-            <v-hover>
-              <v-card
-                slot-scope="{ hover }"
-                :class="`ma-2 transparent elevation-${hover ? 12 : 0}`"
-                @click="showMenu(item)"
-              >
-                <v-card-title>
-                  <p class="item mr-4">{{ item.name }}</p>
-                  <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
-                </v-card-title>
-                <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
-                <v-card-actions class="message">{{ item.comment }}</v-card-actions>
-              </v-card>
-            </v-hover>
-          </v-flex>
+        <v-flex v-for="(item) in catItems.menu" :key="item.id" xs12 md6>
+          <v-hover>
+            <v-card
+              slot-scope="{ hover }"
+              :class="`ma-2 transparent elevation-${hover ? 12 : 0}`"
+              @click="showMenu(item)"
+            >
+              <v-card-title>
+                <p class="item mr-4">{{ item.name }}</p>
+                <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
+              </v-card-title>
+              <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
+              <v-card-actions class="message">{{ item.comment }}</v-card-actions>
+            </v-card>
+          </v-hover>
+        </v-flex>
       </v-layout>
     </v-flex>
 
@@ -124,18 +154,21 @@ export default {
   },
   async mounted() {
     this.isLoading = true
-    await this.$store.dispatch('menu/readAllMenu')
+    await this.$store.dispatch('menu_disp/readAllMenu')
     this.isLoading = false
   },
   computed: {
-    lunchMenu() {
-      return this.$store.getters['menu/lunchMenu']
+    morningMenus() {
+      return this.$store.getters['menu_disp/morningMenus']
     },
-    dinnerMenu() {
-      return this.$store.getters['menu/dinnerMenu']
+    lunchMenus() {
+      return this.$store.getters['menu_disp/lunchMenus']
     },
-    drinkMenu() {
-      return this.$store.getters['menu/drinkMenu']
+    dinnerMenus() {
+      return this.$store.getters['menu_disp/dinnerMenus']
+    },
+    takeoutMenus() {
+      return this.$store.getters['menu_disp/takeoutMenus']
     }
   },
   data() {

@@ -69,9 +69,10 @@ export default {
     if (
       this.menuType === 'dinner' ||
       this.menuType === 'lunch' ||
-      this.menuType === 'drink'
+      this.menuType === 'morning' ||
+      this.menuType === 'takeout'
     ) {
-      await this.$store.dispatch('menu/readEditMenu', {
+      await this.$store.dispatch('menu_edit/readEditMenu', {
         editMenuType: this.menuType
       })
     } else {
@@ -83,16 +84,16 @@ export default {
   },
   computed: {
     editCategories() {
-      return this.$store.getters['menu/editCategories']
+      return this.$store.getters['menu_edit/editCategories']
     },
     editTargetMenu: {
       get() {
-        return this.$store.getters['menu/editMenu']
+        return this.$store.getters['menu_edit/editMenu']
       },
       async set(val) {
         // ドラッグドロップで並び替え時
         this.isLoading = true
-        await this.$store.dispatch('menu/updateDispOrderAsync', {
+        await this.$store.dispatch('menu_edit/updateDispOrderAsync', {
           menuList: val
         })
         this.isLoading = false
@@ -117,16 +118,15 @@ export default {
         this.editCategories
       )
       if (data) {
-        console.log(data)
         this.isLoading = true
-        await this.$store.dispatch('menu/addMenuAsync', { menu: data })
+        await this.$store.dispatch('menu_edit/addMenuAsync', { menu: data })
         this.isLoading = false
       }
     },
     async deleteMenu(index) {
       if (confirm('削除しますか？')) {
         this.isLoading = true
-        await this.$store.dispatch('menu/deleteMenuAsync', {
+        await this.$store.dispatch('menu_edit/deleteMenuAsync', {
           index: index
         })
         this.isLoading = false
@@ -139,16 +139,14 @@ export default {
       )
       if (data) {
         this.isLoading = true
-        await this.$store.dispatch('menu/editMenuAsync', {
+        await this.$store.dispatch('menu_edit/editMenuAsync', {
           menu: data
         })
         this.isLoading = false
       }
     },
     cancel() {
-      if (confirm('終了しますか？')) {
-        this.$router.push('/admin')
-      }
+      this.$router.push('/admin')
     }
   },
   data() {

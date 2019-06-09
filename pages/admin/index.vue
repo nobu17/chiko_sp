@@ -70,6 +70,11 @@ export default {
     return {
       menuList1: [
         {
+          text: 'モーニングメニュー編集',
+          icon: 'info',
+          link: '/admin/editmenu/morning'
+        },
+        {
           text: 'ランチメニュー編集',
           icon: 'info',
           link: '/admin/editmenu/lunch'
@@ -80,12 +85,17 @@ export default {
           link: '/admin/editmenu/dinner'
         },
         {
-          text: 'ドリンクメニュー編集',
+          text: 'テイクアウトメニュー編集',
           icon: 'info',
-          link: '/admin/editmenu/drink'
+          link: '/admin/editmenu/takeout'
         }
       ],
       menuList2: [
+        {
+          text: 'モーニングカテゴリ編集',
+          icon: 'info',
+          link: '/admin/editcategory/morning'
+        },
         {
           text: 'ランチカテゴリ編集',
           icon: 'info',
@@ -97,9 +107,9 @@ export default {
           link: '/admin/editcategory/dinner'
         },
         {
-          text: 'ドリンクカテゴリ編集',
+          text: 'テイクアウトカテゴリ編集',
           icon: 'info',
-          link: '/admin/editcategory/drink'
+          link: '/admin/editcategory/takeout'
         }
       ]
     }

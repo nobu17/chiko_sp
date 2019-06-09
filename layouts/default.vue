@@ -77,6 +77,12 @@ export default {
         { title: 'Contact', icon: 'face', link: '/contact' },
         { title: 'blog', icon: 'beenhere', link: '/blog' },
         {
+          title: 'admin page',
+          icon: 'lock',
+          link: '/admin',
+          isNeedLogin: true
+        },
+        {
           title: 'logout',
           icon: 'lock_open',
           link: '/logout',

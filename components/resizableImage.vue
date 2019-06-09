@@ -31,10 +31,6 @@
 import ImageUtil from '../lib/imageUtil'
 export default {
   props: {
-    drawImageArgs: {
-      type: Function,
-      required: true
-    },
     imageName: {
       type: String,
       required: true

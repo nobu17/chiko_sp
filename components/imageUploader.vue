@@ -6,7 +6,6 @@
       </v-flex>
       <v-flex xs12>
         <ResizableImageInput
-          :draw-image-args="drawImageArgs"
           :imageName="fileName"
           @resized="resizeFinish"
           @disabledChanged="disabledChanged"

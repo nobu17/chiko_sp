@@ -7,21 +7,21 @@
       <v-flex xs12>
         <label>※既存のカテゴリ名を編集/削除した場合、変更前のアイテムのカテゴリは手動で変更必要なことに注意</label>
       </v-flex>
-         <v-form ref="form" v-model="newValid" lazy-validation>
-          <v-flex xs12>
-            <v-text-field
-              ref="nameTextBox"
-              v-model="addingCategory"
-              :rules="categoryRules"
-              :counter="10"
-              label="新規カテゴリ名"
-              required
-            ></v-text-field>
-          </v-flex>
-        </v-form>
-        <v-flex xs12 class='mb-4'>
-          <v-btn color="info" @click="addCategory()">新規追加</v-btn>
+      <v-form ref="form" v-model="newValid" lazy-validation>
+        <v-flex xs12>
+          <v-text-field
+            ref="nameTextBox"
+            v-model="addingCategory"
+            :rules="categoryRules"
+            :counter="10"
+            label="新規カテゴリ名"
+            required
+          ></v-text-field>
         </v-flex>
+      </v-form>
+      <v-flex xs12 class="mb-4">
+        <v-btn color="info" @click="addCategory()">新規追加</v-btn>
+      </v-flex>
       <v-flex xs12>
         <v-alert v-if="errorMessage != ''" :value="true" type="error">{{ errorMessage }}</v-alert>
       </v-flex>
@@ -79,9 +79,10 @@ export default {
     if (
       this.menuType === 'dinner' ||
       this.menuType === 'lunch' ||
-      this.menuType === 'drink'
+      this.menuType === 'morning' ||
+      this.menuType === 'takeout'
     ) {
-      await this.$store.dispatch('menu/readEditCategories', {
+      await this.$store.dispatch('menu_edit/readEditCategories', {
         editMenuType: this.menuType
       })
     } else {
@@ -94,11 +95,11 @@ export default {
   computed: {
     editCategories: {
       get() {
-        return this.$store.getters['menu/editCategories']
+        return this.$store.getters['menu_edit/editCategories']
       },
       set(val) {
         // ドラッグドロップで並び替え時
-        this.$store.commit('menu/setEditCategories', {
+        this.$store.commit('menu_edit/setEditCategories', {
           editCategories: val
         })
       }
@@ -107,7 +108,7 @@ export default {
   methods: {
     click() {}, // dummy for clickable
     updateCategory(index, item) {
-      this.$store.commit('menu/setEditCategory', {
+      this.$store.commit('menu_edit/setEditCategory', {
         index: index,
         editItem: item
       })
@@ -115,19 +116,23 @@ export default {
     addCategory() {
       this.errorMessage = ''
       if (this.$refs.form.validate()) {
+        if (this.editCategories.length > 9) {
+          this.errorMessage = 'カテゴリ数は10個以上追加不可能です。'
+        }
         // check the duplication
         const add = this.addingCategory.trim()
         if (this.editCategories.some(cat => cat === add)) {
           this.errorMessage = '既に同名のカテゴリを登録済みです。'
         } else {
-          this.$store.commit('menu/addEditCategory', {
+          this.$store.commit('menu_edit/addEditCategory', {
             newItem: add
           })
+          this.addingCategory = ''
         }
       }
     },
     deleteCategory(index) {
-      this.$store.commit('menu/deleteEditCategory', {
+      this.$store.commit('menu_edit/deleteEditCategory', {
         index: index
       })
     },
@@ -156,7 +161,7 @@ export default {
           return
         }
         this.isLoading = true
-        await this.$store.dispatch('menu/commitEditCategories')
+        await this.$store.dispatch('menu_edit/commitEditCategories')
         this.isLoading = false
         this.$router.push('/admin')
       }
