@@ -56,6 +56,10 @@ export const actions = {
   },
   async reloadEditMenu({ commit }) {
     const menu = await menuClient.getMenus()
+    // 編集前画像情報を設定して保持させる
+    for (const me of menu) {
+      me.beforeImg = JSON.parse(JSON.stringify(me.img))
+    }
     commit('setEditMenu', { menu: menu })
   },
   async reloadEditCategories({ commit }) {
@@ -80,7 +84,7 @@ export const actions = {
     // reload
     await dispatch('reloadEditMenu')
   },
-  async editMenuAsync({ dispatch, state }, { menu }) {
+  async editMenuAsync({ dispatch }, { menu }) {
     // 編集前画像の削除
     if (menu.beforeImg.fileUrl !== menu.img.fileUrl) {
       await menuClient.deleteImage(menu.beforeImg)
@@ -95,7 +99,7 @@ export const actions = {
       )
       menu.img.fileUrl = await menuClient.addImage(menu.img)
     }
-    await menuClient.editMenu(menu)
+    await menuClient.updateMenu(menu)
     // reload
     await dispatch('reloadEditMenu')
   },

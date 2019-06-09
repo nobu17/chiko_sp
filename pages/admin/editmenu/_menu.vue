@@ -14,6 +14,9 @@
           </label>
         </v-flex>
         <v-flex xs12>
+          <v-alert v-if="errorMessage != ''" :value="true" type="error">{{ errorMessage }}</v-alert>
+        </v-flex>
+        <v-flex xs12>
           <v-list>
             <draggable v-model="editTargetMenu">
               <v-list-tile
@@ -103,6 +106,7 @@ export default {
   methods: {
     click() {}, // this is duumy for ui image
     async addNew() {
+      this.errorMessage = ''
       const target = {
         id: '999',
         name: '',
@@ -119,30 +123,47 @@ export default {
       )
       if (data) {
         this.isLoading = true
-        await this.$store.dispatch('menu_edit/addMenuAsync', { menu: data })
-        this.isLoading = false
+        try {
+          await this.$store.dispatch('menu_edit/addMenuAsync', { menu: data })
+        } catch (err) {
+          this.errorMessage = 'エラーが発生:' + err
+        } finally {
+          this.isLoading = false
+        }
       }
     },
     async deleteMenu(index) {
       if (confirm('削除しますか？')) {
+        this.errorMessage = ''
         this.isLoading = true
-        await this.$store.dispatch('menu_edit/deleteMenuAsync', {
-          index: index
-        })
-        this.isLoading = false
+        try {
+          await this.$store.dispatch('menu_edit/deleteMenuAsync', {
+            index: index
+          })
+        } catch (err) {
+          this.errorMessage = 'エラーが発生:' + err
+        } finally {
+          this.isLoading = false
+        }
       }
     },
     async editMenu(item, index) {
+      this.errorMessage = ''
       const data = await this.$refs.editMenuDialog.open(
         JSON.parse(JSON.stringify(item)),
         this.editCategories
       )
       if (data) {
         this.isLoading = true
-        await this.$store.dispatch('menu_edit/editMenuAsync', {
-          menu: data
-        })
-        this.isLoading = false
+        try {
+          await this.$store.dispatch('menu_edit/editMenuAsync', {
+            menu: data
+          })
+        } catch (err) {
+          this.errorMessage = 'エラーが発生:' + err
+        } finally {
+          this.isLoading = false
+        }
       }
     },
     cancel() {
@@ -151,6 +172,7 @@ export default {
   },
   data() {
     return {
+      errorMessage: '',
       isLoading: false,
       menuType: null
     }
