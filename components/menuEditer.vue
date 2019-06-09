@@ -74,7 +74,7 @@ export default {
       this.disporder = 0
       this.category = ''
     }
-    this.setfocus()
+    // this.setfocus()
   },
   computed: {},
   methods: {
@@ -157,6 +157,9 @@ export default {
         v => {
           if (!v || v.trim() === '') {
             return 'カテゴリを選択して下さい。'
+          }
+          if (!this.categories.some(x => v === x)) {
+            return 'カテゴリ一覧からカテゴリを選択してください。'
           }
           return true
         }
