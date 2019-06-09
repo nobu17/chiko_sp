@@ -23,6 +23,9 @@ const menuClient = {
     const categories = await firebaseDbClient.getCategories(this.menuType)
     return categories
   },
+  async updateCategories(categories) {
+    await firebaseDbClient.updateCategories(this.menuType, categories)
+  },
   async readMenu() {
     let menu = []
     if (this.isEditDinner()) {
@@ -174,6 +177,15 @@ export const mutations = {
   setEditCategories(state, { editCategories }) {
     state.editCategories = editCategories
   },
+  addEditCategory(state, { newItem }) {
+    state.editCategories.push(newItem)
+  },
+  deleteEditCategory(state, { index }) {
+    state.editCategories.splice(index, 1)
+  },
+  setEditCategory(state, { index, editItem }) {
+    state.editCategories[index] = editItem
+  },
   setEditMenuWithReDispOrder(state, { editMenu }) {
     state.editMenu = editMenu
     menuUitl.reassingOrderNo(state.editMenu)
@@ -278,14 +290,29 @@ export const actions = {
     const menu = await menuClient.readMenu()
     commit('setEditMenu', { menu: menu })
   },
-  async readEditMenu({ commit }, { editMenuType }) {
+  async readEditMenu({ commit, dispatch }, { editMenuType }) {
     commit('setEditMenuType', { editMenuType: editMenuType })
     menuClient.init(editMenuType)
     const menu = await menuClient.readMenu()
     commit('setEditMenu', { menu: menu })
     // read categories
+    await dispatch('readEditCategories', { editMenuType: editMenuType })
+  },
+  async readEditCategories({ commit }, { editMenuType }) {
+    commit('setEditMenuType', { editMenuType: editMenuType })
+    menuClient.init(editMenuType)
+    // read categories
     const categoeirs = await menuClient.readCategories()
     commit('setEditCategories', { editCategories: categoeirs })
+  },
+  async reloadEditCategories({ commit }) {
+    // read categories
+    const categoeirs = await menuClient.readCategories()
+    commit('setEditCategories', { editCategories: categoeirs })
+  },
+  async commitEditCategories({ state, dispatch }) {
+    await menuClient.updateCategories(state.editCategories)
+    await dispatch('reloadEditCategories')
   },
   async readAllMenu({ commit }) {
     const menuList = await menuClient.readAllMenu()

@@ -7,14 +7,38 @@
         </h3>
       </v-flex>
       <v-flex xs12>
+        <label class="menuTitle">メニュー編集</label>
+      </v-flex>
+      <v-flex xs12>
         <ul>
           <v-list>
-            <template v-for="menu in menuList">
+            <template v-for="menu in menuList1">
               <v-list-tile :key="menu.link" @click="changePage(menu.link)">
                 <v-list-tile-avatar>
                   <v-icon>{{ menu.icon }}</v-icon>
                 </v-list-tile-avatar>
-                <v-list-tile-content :class="{'menuTitle_xs': $vuetify.breakpoint.smAndDown, 'menuTitle': $vuetify.breakpoint.mdAndUp}">{{menu.text}}</v-list-tile-content>
+                <v-list-tile-content
+                  :class="{'menuTitle_xs': $vuetify.breakpoint.smAndDown, 'menuTitle': $vuetify.breakpoint.mdAndUp}"
+                >{{menu.text}}</v-list-tile-content>
+              </v-list-tile>
+            </template>
+          </v-list>
+        </ul>
+      </v-flex>
+      <v-flex xs12>
+        <label class="menuTitle">カテゴリ編集</label>
+      </v-flex>
+      <v-flex xs12>
+        <ul>
+          <v-list>
+            <template v-for="menu in menuList2">
+              <v-list-tile :key="menu.link" @click="changePage(menu.link)">
+                <v-list-tile-avatar>
+                  <v-icon>{{ menu.icon }}</v-icon>
+                </v-list-tile-avatar>
+                <v-list-tile-content
+                  :class="{'menuTitle_xs': $vuetify.breakpoint.smAndDown, 'menuTitle': $vuetify.breakpoint.mdAndUp}"
+                >{{menu.text}}</v-list-tile-content>
               </v-list-tile>
             </template>
           </v-list>
@@ -44,7 +68,7 @@ export default {
   },
   data() {
     return {
-      menuList: [
+      menuList1: [
         {
           text: 'ランチメニュー編集',
           icon: 'info',
@@ -59,6 +83,23 @@ export default {
           text: 'ドリンクメニュー編集',
           icon: 'info',
           link: '/admin/editmenu/drink'
+        }
+      ],
+      menuList2: [
+        {
+          text: 'ランチカテゴリ編集',
+          icon: 'info',
+          link: '/admin/editcategory/lunch'
+        },
+        {
+          text: 'ディナーカテゴリ編集',
+          icon: 'info',
+          link: '/admin/editcategory/dinner'
+        },
+        {
+          text: 'ドリンクカテゴリ編集',
+          icon: 'info',
+          link: '/admin/editcategory/drink'
         }
       ]
     }
