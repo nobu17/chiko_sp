@@ -19,7 +19,7 @@
             ></v-text-field>
           </v-flex>
         </v-form>
-        <v-flex xs12>
+        <v-flex xs12 class='mb-4'>
           <v-btn color="info" @click="addCategory()">新規追加</v-btn>
         </v-flex>
       <v-flex xs12>
