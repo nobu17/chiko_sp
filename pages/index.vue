@@ -51,6 +51,25 @@
             <tr>
               <td>定休日：毎週 水曜日</td>
             </tr>
+            <tr>
+              <td>LINEでお得なクーポンやお知らせを配信しています。友達追加をお願いします。</td>
+            </tr>
+            <tr>
+              <td>
+                <div
+                  class="line-it-button lineInfo"
+                  data-lang="ja"
+                  data-type="friend"
+                  data-lineid="@bzp3447p"
+                  style="display: none;"
+                ></div>
+                <script
+                  src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js "
+                  async="async"
+                  defer="defer"
+                ></script>
+              </td>
+            </tr>
           </table>
         </v-card-text>
       </v-card>
@@ -98,5 +117,9 @@ table th:after {
 table td {
   text-align: center;
   width: 85%;
+}
+
+.lineInfo {
+  text-align: center;
 }
 </style>
