@@ -10,7 +10,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'chico spice★静岡県伊豆の国市のスパイスカレー屋',
+    title: 'CHICO★SPICE 静岡県田方郡函南町のスパイスカレー屋',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -18,7 +18,7 @@ module.exports = {
         hid: 'description',
         name: 'description',
         content:
-          '静岡県伊豆の国市(大仁、韮山、伊豆長岡、修善寺)でおいしいスパイスカレーを提供するお店です。'
+          '静岡県田方郡函南町のおいしいスパイスカレーを提供するお店です。'
       }
     ],
     link: [

@@ -1,7 +1,7 @@
 <template>
   <v-layout justify-center align-center wrap>
     <v-flex xs12>
-      <v-img :src="top_image_src" aspect-ratio="1.8"/>
+      <v-img :src="top_image_src" aspect-ratio="1.8" />
     </v-flex>
     <v-flex xs12>
       <v-card class="elevation-0 transparent">
@@ -11,7 +11,7 @@
         <v-card-text>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >Chico★Spiceは伊豆の大仁で、おいしいカレーやスパイス料理を提供するカフェです。</p>
+          >CHICO★SPICEは静岡県駿東郡函南町で、おいしいカレーやスパイス料理を提供するカフェです。</p>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -23,7 +23,13 @@
         <v-card-text>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >コンセプトコンセプトコンセプトコンセプトコンセプト</p>
+          >鰹や昆布でとった和風だしをベースとしたスパイスカレー。</p>
+          <p
+            :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
+          >島とうがらし、塩、黒糖などの沖縄の調味料を隠し味に使っています。</p>
+          <p
+            :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
+          >本を読みながら、お酒を飲みながら、ゆったりとお過ごしください。</p>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -37,19 +43,19 @@
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
           >
             <tr>
-              <td>〒410-0011 静岡県伊豆の国市大仁600</td>
+              <td>〒419-0123 静岡県田方郡函南町間宮680</td>
             </tr>
             <tr>
               <td>電話番号：0000-00-0000</td>
             </tr>
             <tr>
-              <td>ランチタイム：10:00 - 15:00</td>
+              <td>ランチタイム：11:00 - 14:30</td>
             </tr>
             <tr>
-              <td>ディナータイム：17:00 - 21:00</td>
+              <td>ディナータイム：17:00 - 22:00</td>
             </tr>
             <tr>
-              <td>定休日：毎週 水曜日</td>
+              <td>定休日：木曜日</td>
             </tr>
             <tr>
               <td>LINEでお得なクーポンやお知らせを配信しています。友達追加をお願いします。</td>
@@ -62,12 +68,12 @@
                   data-type="friend"
                   data-lineid="@bzp3447p"
                   style="display: none;"
-                ></div>
+                />
                 <script
                   src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js "
                   async="async"
                   defer="defer"
-                ></script>
+                />
               </td>
             </tr>
           </table>
@@ -82,14 +88,14 @@
 
 export default {
   components: {},
-  mounted() {},
   data() {
     return {
       topimage: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
       top_image_src: require('~/assets/img/top.jpg'),
       img2: 'https://picsum.photos/500/300?image=3'
     }
-  }
+  },
+  mounted() {}
 }
 </script>
 <style>

@@ -2,7 +2,7 @@
   <v-app>
     <v-toolbar dark app>
       <v-toolbar-title class="headline">
-        <span class="px-2">Chico★Spice</span>
+        <span class="px-2">CHICO★SPICE</span>
       </v-toolbar-title>
       <v-spacer/>
       <v-toolbar-items class="hidden-sm-and-down">
