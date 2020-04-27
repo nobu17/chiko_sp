@@ -1,3 +1,5 @@
+import { FireStoreUserClient } from '../lib/firebaseUserClient'
+
 export const state = () => ({
   isLogined: false,
   user: null
@@ -25,5 +27,20 @@ export const mutations = {
   clearLogginUser(state) {
     state.user = null
     state.isLogined = false
+  }
+}
+
+const client = new FireStoreUserClient()
+
+export const actions = {
+  async editUser({ commit }, { user }) {
+    if (user && user.sub) {
+      await client.editUser({
+        id: user.sub,
+        name: user.name,
+        nickname: user.nickname
+      })
+    }
+    commit('setLogginUser', user)
   }
 }
