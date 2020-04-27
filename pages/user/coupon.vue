@@ -6,7 +6,7 @@
           <h3 class="title-head text-md-center text-xs-center mt-3 mb-4">クーポン</h3>
           <p>使用したいクーポンを選択して会計時にご提示ください。</p>
         </v-flex>
-        <v-flex class="coupon" v-for="(coupon) in coupons" :key="coupon.id" xs12 md6>
+        <v-flex v-for="(coupon) in coupons" :key="coupon.id" class="coupon" xs12 md6>
           <v-hover>
             <v-card
               slot-scope="{ hover }"
