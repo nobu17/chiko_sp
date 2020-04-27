@@ -4,7 +4,7 @@
       <v-toolbar-title class="headline">
         <span class="px-2">CHICO★SPICE</span>
       </v-toolbar-title>
-      <v-spacer/>
+      <v-spacer />
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn v-for="item in filteredMenu" :key="item.title" flat @click="changePage(item)">
           <v-icon class="pr-1">{{ item.icon }}</v-icon>
@@ -12,7 +12,7 @@
         </v-btn>
       </v-toolbar-items>
       <v-menu class="hidden-md-and-up">
-        <v-toolbar-side-icon slot="activator"/>
+        <v-toolbar-side-icon slot="activator" />
         <v-list>
           <v-list-tile v-for="item in filteredMenu" :key="item.title" :to="item.link">
             <v-list-tile-content>
@@ -27,12 +27,12 @@
     </v-toolbar>
     <v-content>
       <v-container>
-        <nuxt/>
+        <nuxt />
       </v-container>
     </v-content>
-    <Footer/>
+    <Footer />
     <div data-app>
-      <loadingScreen :isLoading="isLoading"/>
+      <loadingScreen :isLoading="isLoading" />
     </div>
   </v-app>
 </template>
@@ -74,6 +74,11 @@ export default {
         { title: 'Top', icon: 'home', link: '/' },
         { title: 'Menu', icon: 'restaurant_menu', link: '/menu' },
         { title: 'Access', icon: 'directions_car', link: '/access' },
+        {
+          title: 'Coupon',
+          icon: 'beenhere',
+          link: '/user/coupon'
+        },
         { title: 'Contact', icon: 'face', link: '/contact' },
         { title: 'blog', icon: 'beenhere', link: '/blog' },
         {
