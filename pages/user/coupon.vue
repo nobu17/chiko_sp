@@ -118,9 +118,9 @@ export default {
     },
     async logout() {
       try {
-        await auth0AuthClient.logout()
         this.$store.commit('user_auth/clearLogginUser')
-        this.$router.push('/user/login')
+        await auth0AuthClient.logout(window.location.origin)
+        // this.$router.push('/user/login')
       } catch (err) {
         console.error(err)
         this.errorMessage =

@@ -53,7 +53,6 @@ export default {
     async login() {
       try {
         const url = window.location.origin + '/user/coupon'
-        alert(url)
         await auth0AuthClient.loginWithRedirect(url)
       } catch (err) {
         console.error(err)
