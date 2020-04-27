@@ -15,9 +15,6 @@
           <v-btn type="button" color="info" @click="login">ログイン</v-btn>
         </v-flex>
         <v-flex xs12>
-          <v-btn type="button" color="info" @click="logout">ログアウト</v-btn>
-        </v-flex>
-        <v-flex xs12>
           <v-alert v-if="errorMessage != ''" :value="true" type="error">{{ errorMessage }}</v-alert>
         </v-flex>
       </v-layout>
@@ -47,11 +44,7 @@ export default {
     }
   },
   created() {},
-  mounted() {
-    if (this.isLogined) {
-      this.goNextPage()
-    }
-  },
+  mounted() {},
   methods: {
     async login() {
       try {
@@ -66,16 +59,6 @@ export default {
         console.error(err)
         this.errorMessage =
           'ログイン中にエラーが発生しました。画面をリロードして再度お試し下さい。'
-      }
-    },
-    async logout() {
-      try {
-        await auth0AuthClient.logout()
-        this.$store.commit('user_auth/clearLogginUser')
-      } catch (err) {
-        console.error(err)
-        this.errorMessage =
-          'ログアウト中にエラーが発生しました。画面をリロードして再度お試し下さい。'
       }
     },
     goNextPage() {
