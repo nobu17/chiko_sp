@@ -15,6 +15,8 @@
             >
               <v-card-title>
                 <p class="item mr-4">{{ coupon.title }}</p>
+                <p v-if="coupon.limit_usage !== 0" class="item">({{ coupon.limit_usage }}回まで使用可能)</p>
+                <p v-if="coupon.used_number !== 0" class="item">（{{ coupon.used_number }}回使用済)</p>
               </v-card-title>
               <v-img :src="coupon.img.fileUrl | imageFilter" aspect-ratio="2" />
               <v-card-actions class="message">{{ coupon.message }}</v-card-actions>
