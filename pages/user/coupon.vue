@@ -6,7 +6,7 @@
           <h3 class="title-head text-md-center text-xs-center mt-3 mb-4">クーポン</h3>
           <p>使用したいクーポンを選択して会計時にご提示ください。</p>
         </v-flex>
-        <v-flex v-for="(coupon) in coupons" :key="coupon.id" xs12 md6>
+        <v-flex class="coupon" v-for="(coupon) in coupons" :key="coupon.id" xs12 md6>
           <v-hover>
             <v-card
               slot-scope="{ hover }"
@@ -15,11 +15,11 @@
             >
               <v-card-title>
                 <p class="item mr-4">{{ coupon.title }}</p>
+                <p class="item mr-4">{{ coupon.message }}</p>
                 <p v-if="coupon.limit_usage !== 0" class="item">({{ coupon.limit_usage }}回まで使用可能)</p>
                 <p v-if="coupon.used_number !== 0" class="item">（{{ coupon.used_number }}回使用済)</p>
               </v-card-title>
               <v-img :src="coupon.img.fileUrl | imageFilter" aspect-ratio="2" />
-              <v-card-actions class="message">{{ coupon.message }}</v-card-actions>
             </v-card>
           </v-hover>
         </v-flex>
@@ -28,7 +28,7 @@
           <v-alert v-if="errorMessage != ''" :value="true" type="error">{{ errorMessage }}</v-alert>
         </v-flex>
         <v-flex xs12>
-          <p>{{ user.name }}</p>
+          <p>再ログインしたい場合は下記ボタンを押下してください。</p>
           <v-btn type="button" color="info" @click="logout">ログアウト</v-btn>
         </v-flex>
       </v-layout>
@@ -69,7 +69,6 @@ export default {
       return this.$store.getters['user_auth/isLogined']
     },
     user() {
-      console.log('user', this.$store.getters['user_auth/user'])
       return this.$store.getters['user_auth/user']
     }
   },
@@ -103,6 +102,7 @@ export default {
       )
       if (isUseCoupon) {
         await this.useCoupon(coupon)
+        await this.loadCoupons(this.user.id)
       }
     },
     async useCoupon(coupon) {
@@ -131,5 +131,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.coupon {
+  border: medium solid black;
+}
 </style>
