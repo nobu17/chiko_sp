@@ -44,7 +44,11 @@ export default {
     }
   },
   created() {},
-  mounted() {},
+  mounted() {
+    if (this.isLogined) {
+      this.goNextPage()
+    }
+  },
   methods: {
     async login() {
       try {
