@@ -52,6 +52,17 @@ export default {
   methods: {
     async login() {
       try {
+        const url = window.location.origin + '/user/coupon'
+        alert(url)
+        await auth0AuthClient.loginWithRedirect(url)
+      } catch (err) {
+        console.error(err)
+        this.errorMessage =
+          'ログイン中にエラーが発生しました。画面をリロードして再度お試し下さい。'
+      }
+    },
+    async login2() {
+      try {
         const user = await auth0AuthClient.login()
         if (user) {
           this.$store.commit('user_auth/setLogginUser', user)

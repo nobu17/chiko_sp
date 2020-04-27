@@ -14,7 +14,7 @@ export const getters = {
 
 export const mutations = {
   setLogginUser(state, user) {
-    if (user && user.email) {
+    if (user && user.sub) {
       state.user = { id: user.sub, name: user.name, nickname: user.nickname }
       state.isLogined = true
     } else {

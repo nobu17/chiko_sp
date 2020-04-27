@@ -30,10 +30,6 @@ export default async ({ store, route, redirect }) => {
     return redirect('/user/coupon')
   }
 
-  if (isUserAuthed && route.path === '/user/logout') {
-    await firebaseAuthClient.logout()
-    return redirect('/user/login')
-  }
   if (route.meta[0]) {
     // for admin auth
     const requiredUserAuth = route.meta[0].requiredUserAuth
