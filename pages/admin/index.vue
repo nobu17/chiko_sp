@@ -136,6 +136,11 @@ export default {
           text: 'クーポン編集',
           icon: 'info',
           link: '/admin/editCoupon/'
+        },
+        {
+          text: 'クーポン統計',
+          icon: 'info',
+          link: '/admin/couponstatistic/coupon'
         }
       ]
     }
