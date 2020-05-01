@@ -144,9 +144,6 @@ export default {
       ],
       commentRules: [
         v => {
-          if (!v || v.trim() === '') {
-            return '説明を入力して下さい。'
-          }
           if (v.length > 20) {
             return '説明は50文字以内で入力してください。。'
           }
