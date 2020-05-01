@@ -141,6 +141,11 @@ export default {
           text: 'クーポン統計',
           icon: 'info',
           link: '/admin/couponstatistic/coupon'
+        },
+        {
+          text: 'クーポン統計(ユーザー)',
+          icon: 'info',
+          link: '/admin/couponstatistic/coupon_user'
         }
       ]
     }
