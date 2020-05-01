@@ -84,10 +84,10 @@ export default {
       return userId.split('|')[0]
     },
     async recordSelected(userId) {
-      const usage = await this.loadUserUsage(userId)
-      console.log(usage)
-      if (usage && Object.keys(usage).length) {
-        await this.$refs.couponUserStatisticDialog.open(usage, this.coupons)
+      const data = await this.loadUserUsage(userId)
+      console.log(data)
+      if (data.usage && Object.keys(data.usage).length) {
+        await this.$refs.couponUserStatisticDialog.open(data, this.coupons)
       } else {
         alert('データがありません')
       }

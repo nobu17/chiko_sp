@@ -3,16 +3,48 @@
     <v-dialog v-model="dialog" max-width="900" class="diag">
       <v-card>
         <v-container>
-          <v-flex xs12>
-            <v-data-table :headers="headers" :items="statisticDataArray" class="elevation-1" :disable-initial-sort="true" hide-actions>
-              <template v-slot:items="props">
-                <tr @click="{}">
-                  <td>{{ props.item.coupon_name }}</td>
-                  <td>{{ props.item.number }}</td>
-                </tr>
-              </template>
-            </v-data-table>
-          </v-flex>
+          <v-tabs
+            v-model="active"
+            color="cyan"
+            dark
+            slider-color="yellow"
+          >
+            <v-tab
+              ripple
+            >
+              企画別
+            </v-tab>
+            <v-tab
+              ripple
+            >
+              生データ
+            </v-tab>
+            <v-tab-item>
+              <v-flex xs12>
+                <v-data-table :headers="headers" :items="statisticDataArray" class="elevation-1" :disable-initial-sort="true" hide-actions>
+                  <template v-slot:items="props">
+                    <tr @click="{}">
+                      <td>{{ props.item.coupon_name }}</td>
+                      <td>{{ props.item.number }}</td>
+                    </tr>
+                  </template>
+                </v-data-table>
+              </v-flex>
+            </v-tab-item>
+            <v-tab-item>
+              <v-flex xs12>
+                <p>※直近100件のみ表示</p>
+                <v-data-table :headers="headersLog" :items="statisticData.log" class="elevation-1" :disable-initial-sort="true" hide-actions>
+                  <template v-slot:items="props">
+                    <tr @click="{}">
+                      <td>{{ props.item.used_time }}</td>
+                      <td>{{ getCouponName(props.item.coupon_id) }}</td>
+                    </tr>
+                  </template>
+                </v-data-table>
+              </v-flex>
+            </v-tab-item>
+          </v-tabs>
         </v-container>
       </v-card>
     </v-dialog>
@@ -24,19 +56,30 @@ export default {
   components: {},
   data() {
     return {
+      active: null,
       dialog: false,
       resolve: null,
       reject: null,
       headers: [
         {
           text: 'クーポン名',
-          align: 'start',
           value: 'key'
         },
         { text: '使用枚数', value: 'number' }
       ],
-      statisticData: {},
-      statisticDataArray: [{ coupon_name: '', used_number: 0 }]
+      headersLog: [
+        {
+          text: '使用日時',
+          value: 'used_time'
+        },
+        { text: 'クーポン名' }
+      ],
+      statisticData: {
+        usage: {},
+        log: []
+      },
+      statisticDataArray: [{ coupon_name: '', used_number: 0 }],
+      coupons: {}
     }
   },
   methods: {
@@ -44,6 +87,11 @@ export default {
       console.log(statisticData)
       this.dialog = true
       this.statisticData = statisticData
+      // conver hashmap at first
+      this.coupons = coupons.reduce(function(map, obj) {
+        map[obj.id] = obj
+        return map
+      }, {})
       this.convertToArrayAndMapCouponName(coupons)
       // this.$refs.editor.setfocus()
       return new Promise((resolve, reject) => {
@@ -56,23 +104,20 @@ export default {
       this.dialog = false
     },
     convertToArrayAndMapCouponName(coupons) {
-      // conver hashmap at first
-      const hashCoupons = coupons.reduce(function(map, obj) {
-        map[obj.id] = obj
-        return map
-      }, {})
-      const array = Object.keys(this.statisticData).map(key => ({
-        key: key,
-        coupon_name: this.getCouponName(key, hashCoupons),
-        number: this.statisticData[key]
-      }))
+      const array = Object.keys(this.statisticData.usage)
+        .map(key => ({
+          key: key,
+          coupon_name: this.getCouponName(key),
+          number: this.statisticData.usage[key]
+        }))
+        .filter(x => x.coupon_name)
       this.statisticDataArray = array
     },
-    getCouponName(couponId, hashCoupons) {
-      if (hashCoupons[couponId] && hashCoupons[couponId].title) {
-        return hashCoupons[couponId].title
+    getCouponName(couponId) {
+      if (this.coupons[couponId] && this.coupons[couponId].title) {
+        return this.coupons[couponId].title
       } else {
-        return '不明'
+        return ''
       }
     }
   }
