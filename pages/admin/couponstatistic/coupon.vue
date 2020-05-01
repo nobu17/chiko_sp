@@ -81,9 +81,14 @@ export default {
       }
     },
     async recordSelected(couponId) {
-      const usage = await this.loadCouponUsage(couponId)
-      if (usage && usage.per_date_usage && usage.per_month_usage) {
-        await this.$refs.couponStatisticDialog.open(usage)
+      const data = await this.loadCouponUsage(couponId)
+      if (
+        data &&
+        data.usage &&
+        data.usage.per_date_usage &&
+        data.usage.per_month_usage
+      ) {
+        await this.$refs.couponStatisticDialog.open(data)
       } else {
         alert('データがありません。')
       }
@@ -92,7 +97,6 @@ export default {
       this.isLoading = true
       try {
         this.coupons = await client.readCouponsAsync()
-        console.log('coupons', this.coupons)
       } catch (err) {
         this.errorMessage = 'エラー発生:' + err
       } finally {
@@ -105,18 +109,18 @@ export default {
       }
       this.isLoading = true
       try {
-        const usage = await client.readCouponsUsageDataAsync(couponId)
+        const data = await client.readCouponsUsageDataAsync(couponId)
         // cache
-        if (usage) {
-          this.couponUsage[couponId] = usage
+        if (data && data.usage && data.log) {
+          this.couponUsage[couponId] = data
         }
-        return usage
+        return data
       } catch (err) {
+        console.error('loadCouponUsage failed', err)
         this.errorMessage = 'エラー発生:' + err
       } finally {
         this.isLoading = false
       }
-      return null
     },
     goBackTop() {
       this.$router.push('/admin')
