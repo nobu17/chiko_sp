@@ -11,7 +11,9 @@
         <v-card-text>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >CHICO★SPICEは静岡県駿東郡函南町で、おいしいカレーやスパイス料理を提供するカフェです。</p>
+          >
+            CHICO★SPICEは静岡県駿東郡函南町で、おいしいカレーやスパイス料理を提供するカフェです。
+          </p>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -23,13 +25,19 @@
         <v-card-text>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >鰹や昆布でとった和風だしをベースとしたスパイスカレー。</p>
+          >
+            鰹や昆布でとった和風だしをベースとしたスパイスカレー。
+          </p>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >島とうがらし、塩、黒糖などの沖縄の調味料を隠し味に使っています。</p>
+          >
+            島とうがらし、塩、黒糖などの沖縄の調味料を隠し味に使っています。
+          </p>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >本を読みながら、お酒を飲みながら、ゆったりとお過ごしください。</p>
+          >
+            本を読みながら、お酒を飲みながら、ゆったりとお過ごしください。
+          </p>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -62,18 +70,7 @@
             </tr>
             <tr>
               <td>
-                <div
-                  class="line-it-button lineInfo"
-                  data-lang="ja"
-                  data-type="friend"
-                  data-lineid="@bzp3447p"
-                  style="display: none;"
-                />
-                <script
-                  src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js "
-                  async="async"
-                  defer="defer"
-                />
+                <a href="https://line.me/R/ti/p/%40bzp3447p"><img height="36" border="0" alt="友だち追加" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a>
               </td>
             </tr>
           </table>
