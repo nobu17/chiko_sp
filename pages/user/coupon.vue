@@ -108,7 +108,7 @@ export default {
     async useCoupon(coupon) {
       try {
         this.isLoading = true
-        await couponClient.useCoupon(this.user.id, coupon.id)
+        await couponClient.useCoupon(this.user, coupon.id)
       } catch (err) {
         console.error(err)
         this.errorMessage = 'データ更新に失敗しました。'
