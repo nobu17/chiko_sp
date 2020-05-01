@@ -44,6 +44,25 @@
           </v-list>
         </ul>
       </v-flex>
+      <v-flex xs12>
+        <label class="menuTitle">クーポン編集</label>
+      </v-flex>
+      <v-flex xs12>
+        <ul>
+          <v-list>
+            <template v-for="menu in menuList3">
+              <v-list-tile :key="menu.link" @click="changePage(menu.link)">
+                <v-list-tile-avatar>
+                  <v-icon>{{ menu.icon }}</v-icon>
+                </v-list-tile-avatar>
+                <v-list-tile-content
+                  :class="{'menuTitle_xs': $vuetify.breakpoint.smAndDown, 'menuTitle': $vuetify.breakpoint.mdAndUp}"
+                >{{menu.text}}</v-list-tile-content>
+              </v-list-tile>
+            </template>
+          </v-list>
+        </ul>
+      </v-flex>
     </v-layout>
   </v-container>
 </template>
@@ -110,6 +129,23 @@ export default {
           text: 'テイクアウトカテゴリ編集',
           icon: 'info',
           link: '/admin/editcategory/takeout'
+        }
+      ],
+      menuList3: [
+        {
+          text: 'クーポン編集',
+          icon: 'info',
+          link: '/admin/editCoupon/'
+        },
+        {
+          text: 'クーポン統計',
+          icon: 'info',
+          link: '/admin/couponstatistic/coupon'
+        },
+        {
+          text: 'クーポン統計(ユーザー)',
+          icon: 'info',
+          link: '/admin/couponstatistic/coupon_user'
         }
       ]
     }

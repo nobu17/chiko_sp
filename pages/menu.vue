@@ -1,12 +1,12 @@
 <template>
   <v-layout v-scroll="onScroll" wrap>
     <v-flex xs12 class="justify-center">
-      <v-btn xs4 flat @click="scroll('morning')">Morning</v-btn>
+      <!-- <v-btn xs4 flat @click="scroll('morning')">Morning</v-btn> -->
       <v-btn xs4 flat @click="scroll('lunch')">Lunch</v-btn>
       <v-btn xs4 flat @click="scroll('dinner')">Dinner</v-btn>
       <v-btn xs4 flat @click="scroll('takeout')">Take Out</v-btn>
     </v-flex>
-    <v-flex xs12>
+    <!-- <v-flex xs12>
       <p id="morning" class="article_title stripe">Morning Menu</p>
     </v-flex>
     <v-flex xs12>
@@ -34,7 +34,7 @@
           </v-hover>
         </v-flex>
       </v-layout>
-    </v-flex>
+    </v-flex> -->
     <v-flex xs12>
       <p id="lunch" class="article_title stripe">Lunch Menu</p>
     </v-flex>

@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .ggmap {
   position: relative;
   padding-bottom: 56.25%;
