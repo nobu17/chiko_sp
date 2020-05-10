@@ -80,7 +80,7 @@ export default {
           link: '/user/coupon'
         },
         { title: 'Contact', icon: 'face', link: '/contact' },
-        { title: 'blog', icon: 'beenhere', link: '/blog' },
+        { title: 'blog', icon: 'comment', link: '/blog' },
         {
           title: 'admin page',
           icon: 'lock',

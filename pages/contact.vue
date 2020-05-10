@@ -24,7 +24,7 @@ export default {
       description:
         '下記のフォームに入力して送信をお願いいたします。 お急ぎの用事は、電話かLINEでご連絡ください。',
       formUrl:
-        '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdEv5T-qmA7J2ePOrdgFG54WOl3iVxPc5oj12kBipxCACzHdA/viewform?embedded=true" width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>'
+        '<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdIKxlkZnf3qnMvshBMLxQlBqunbPpNtQmupZvUfRn_aL2s7A/viewform?embedded=true" width="100%" height="818" frameborder="0" marginheight="0" marginwidth="0">読み込んでいます…</iframe>'
     }
   }
 }
