@@ -80,7 +80,11 @@ export default {
           link: '/user/coupon'
         },
         { title: 'Contact', icon: 'face', link: '/contact' },
-        { title: 'blog', icon: 'comment', link: '/blog' },
+        {
+          title: 'blog',
+          icon: 'comment',
+          link: 'https://ameblo.jp/makimabo592'
+        },
         {
           title: 'admin page',
           icon: 'lock',
@@ -98,7 +102,12 @@ export default {
   },
   methods: {
     changePage(item) {
-      this.$router.push(item.link)
+      // httpから始まる場合は別タブ
+      if (item.link.startsWith('http')) {
+        window.open(item.link)
+      } else {
+        this.$router.push(item.link)
+      }
     }
   }
 }
