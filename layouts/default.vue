@@ -14,7 +14,7 @@
       <v-menu class="hidden-md-and-up">
         <v-toolbar-side-icon slot="activator" />
         <v-list>
-          <v-list-tile v-for="item in filteredMenu" :key="item.title" :to="item.link">
+          <v-list-tile v-for="item in filteredMenu" :key="item.title" @click="changePage(item)">
             <v-list-tile-content>
               <v-list-tile-title>
                 <v-icon class="pr-1">{{ item.icon }}</v-icon>
