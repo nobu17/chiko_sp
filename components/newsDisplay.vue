@@ -4,7 +4,7 @@
       <v-flex xs12>
         <v-card>
           <v-list two-line>
-            <v-list-tile v-for="item in items" :key="item.title" avatar @click="{}">
+            <v-list-tile v-for="item in items" :key="item.title" avatar @click="openLink(item)">
               <v-list-tile-avatar>
                 <v-icon class="blue white--text">assignment</v-icon>
               </v-list-tile-avatar>
@@ -26,6 +26,13 @@ export default {
     items: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    openLink(item) {
+      if (item.link.startsWith('http')) {
+        window.open(item.link)
+      }
     }
   }
 }
