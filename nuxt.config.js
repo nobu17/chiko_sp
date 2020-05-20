@@ -83,6 +83,10 @@ module.exports = {
     */
     extend(config, ctx) {
       // Run ESLint on save
+      config.node = {
+        fs: 'empty',
+        net: 'empty'
+      }
       if (ctx.isDev && ctx.isClient) {
         config.module.rules.push({
           enforce: 'pre',

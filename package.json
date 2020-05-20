@@ -23,6 +23,7 @@
     "exif-js": "^2.3.0",
     "firebase": "^5.11.1",
     "nuxt": "^2.4.0",
+    "rss-parser": "^3.8.0",
     "uuid": "^3.3.2",
     "vuedraggable": "^2.20.0",
     "vuetify": "^1.5.0",

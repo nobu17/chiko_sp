@@ -11,9 +11,7 @@
         <v-card-text>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >
-            CHICO★SPICEは静岡県田方郡函南町で、おいしいカレーやスパイス料理を提供するカフェです。
-          </p>
+          >CHICO★SPICEは静岡県田方郡函南町で、おいしいカレーやスパイス料理を提供するカフェです。</p>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -25,22 +23,28 @@
         <v-card-text>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >
-            鰹や昆布でとった和風だしをベースとしたスパイスカレー。
-          </p>
+          >鰹や昆布でとった和風だしをベースとしたスパイスカレー。</p>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >
-            島とうがらし、塩、黒糖などの沖縄の調味料を隠し味に使っています。
-          </p>
+          >島とうがらし、塩、黒糖などの沖縄の調味料を隠し味に使っています。</p>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >
-            本を読みながら、お酒を飲みながら、ゆったりとお過ごしください。
-          </p>
+          >本を読みながら、お酒を飲みながら、ゆったりとお過ごしください。</p>
         </v-card-text>
       </v-card>
     </v-flex>
+    <v-flex xs12>
+      <v-card class="elevation-0 transparent">
+        <v-card-title class="justify-center">
+          <h3 class="article_title stripe">News</h3>
+        </v-card-title>
+        <v-card-text>
+          <LoadingPartialScreen :isLoading="isLoadingNews" />
+          <NewsDisplay :items="news" />
+        </v-card-text>
+      </v-card>
+    </v-flex>
+
     <v-flex xs12>
       <v-card xs12 class="elevation-0 transparent">
         <v-card-title class="justify-center">
@@ -70,7 +74,14 @@
             </tr>
             <tr>
               <td>
-                <a href="https://line.me/R/ti/p/%40bzp3447p"><img height="36" border="0" alt="友だち追加" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a>
+                <a href="https://line.me/R/ti/p/%40bzp3447p">
+                  <img
+                    height="36"
+                    border="0"
+                    alt="友だち追加"
+                    src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"
+                  />
+                </a>
               </td>
             </tr>
           </table>
@@ -95,20 +106,38 @@
 
 <script>
 // import Top from '~/assets/img/top.jpg'
-
+import RssClinet from '~/lib/rssClient'
+import LoadingPartialScreen from '~/components/loadingPartialScreen'
+import NewsDisplay from '~/components/newsDisplay'
 export default {
-  components: {},
+  components: {
+    LoadingPartialScreen,
+    NewsDisplay
+  },
   data() {
     return {
       topimage: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
       top_image_src: require('~/assets/img/top.jpg'),
+      news: [],
+      isLoadingNews: true,
       img2: 'https://picsum.photos/500/300?image=3',
       description: '伊豆箱根鉄道大場駅駅徒歩15分。駐車場があります。',
       mapurl:
         '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3264.8806069678203!2d138.93632851524276!3d35.08471578033757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6019911823f19ee7%3A0x267e733f627c91f0!2z44CSNDE5LTAxMjMg6Z2Z5bKh55yM55Sw5pa56YOh5Ye95Y2X55S66ZaT5a6u77yW77yY77yQ!5e0!3m2!1sja!2sjp!4v1586253628009!5m2!1sja!2sjp" width="800" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'
     }
   },
-  mounted() {}
+  async mounted() {
+    try {
+      this.isLoadingNews = true
+      const client = new RssClinet()
+      let news = await client.readRssAsync()
+      if (news && news.length > 5) {
+        news = news.slice(4)
+      }
+      this.news = news
+      this.isLoadingNews = false
+    } catch {}
+  }
 }
 </script>
 <style>

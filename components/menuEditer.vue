@@ -54,7 +54,6 @@ export default {
     }
   },
   mounted() {
-    console.log('value', this.value)
     if (this.value) {
       this.id = this.value.id
       this.beforeImg = this.value.beforeImg

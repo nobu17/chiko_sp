@@ -22,3 +22,10 @@ Vue.filter('yenFilter', value => {
   }
   return value + '円'
 })
+
+Vue.filter('isoDateFilter', value => {
+  if (!value || typeof value !== 'string') {
+    return value
+  }
+  return value.substr(0, 10)
+})
