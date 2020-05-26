@@ -129,7 +129,7 @@ export default {
       const client = new RssClinet()
       let news = await client.readRssAsync()
       if (news && news.length > 5) {
-        news = news.slice(4)
+        news = news.slice(0, 5)
       }
       this.news = news
       this.isLoadingNews = false
