@@ -11,7 +11,7 @@
         <v-card-text>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >CHICO★SPICEは静岡県田方郡函南町で、おいしいカレーやスパイス料理を提供するカフェです。</p>
+          >CHICO★SPICEは静岡県田方郡函南町で、おいしいカレーやスパイス料理を提供するお店です。</p>
         </v-card-text>
       </v-card>
     </v-flex>
