@@ -1,7 +1,7 @@
 <template>
   <v-layout justify-center align-center wrap>
     <v-flex xs12>
-      <v-img :src="top_image_src" aspect-ratio="1.8" />
+      <v-img :src="top_image_src" aspect-ratio="1.6" />
     </v-flex>
     <v-flex xs12>
       <v-card class="elevation-0 transparent">
