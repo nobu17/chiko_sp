@@ -143,7 +143,7 @@ export default {
       ],
       commentRules: [
         v => {
-          if (v.length > 20) {
+          if (v.length > 50) {
             return '説明は50文字以内で入力してください。。'
           }
           return true
