@@ -13,6 +13,9 @@
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
           >CHICO★SPICEは静岡県田方郡函南町で、おいしいカレーやスパイス料理を提供するお店です。</p>
         </v-card-text>
+        <v-flex xs12>
+          <v-img :src="t2_img_src" />
+        </v-flex>
       </v-card>
     </v-flex>
     <v-flex xs12>
@@ -27,9 +30,15 @@
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
           >島とうがらし、塩、黒糖などの沖縄の調味料を隠し味に使っています。</p>
+          <v-flex xs12>
+            <v-img :src="t3_img_src" />
+          </v-flex>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
           >本を読みながら、お酒を飲みながら、ゆったりとお過ごしください。</p>
+          <v-flex xs12>
+            <v-img :src="t1_img_src" />
+          </v-flex>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -131,6 +140,9 @@ export default {
   data() {
     return {
       topimage: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+      t1_img_src: require('~/assets/img/ct1.jpg'),
+      t2_img_src: require('~/assets/img/ct2.jpg'),
+      t3_img_src: require('~/assets/img/ct3.jpg'),
       top_image_src: require('~/assets/img/top.jpg'),
       parkin_img: require('~/assets/img/parking.png'),
       news: [],
