@@ -1,6 +1,9 @@
 <template>
   <v-layout v-scroll="onScroll" wrap>
     <v-flex xs12 class="justify-center">
+      <p>画像を選択すると詳細が確認できます。</p>
+    </v-flex>
+    <v-flex xs12 class="justify-center">
       <v-btn xs4 flat @click="scroll('morning')">Morning</v-btn>
       <v-btn xs4 flat @click="scroll('lunch')">Lunch</v-btn>
       <v-btn xs4 flat @click="scroll('dinner')">Dinner</v-btn>
@@ -28,7 +31,7 @@
                 <p class="item mr-4">{{ item.name }}</p>
                 <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
               </v-card-title>
-              <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
+              <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="1.6"/>
               <v-card-actions class="message">{{ item.comment }}</v-card-actions>
             </v-card>
           </v-hover>
@@ -57,7 +60,7 @@
                 <p class="item mr-4">{{ item.name }}</p>
                 <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
               </v-card-title>
-              <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
+              <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="1.6"/>
               <v-card-actions class="message">{{ item.comment }}</v-card-actions>
             </v-card>
           </v-hover>
@@ -87,7 +90,7 @@
                 <p class="item mr-4">{{ item.name }}</p>
                 <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
               </v-card-title>
-              <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
+              <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="1.6"/>
               <v-card-actions class="message">{{ item.comment }}</v-card-actions>
             </v-card>
           </v-hover>
@@ -116,7 +119,7 @@
                 <p class="item mr-4">{{ item.name }}</p>
                 <p class="item">{{ item.price | commaFilter | yenFilter}}</p>
               </v-card-title>
-              <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="2"/>
+              <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="1.6"/>
               <v-card-actions class="message">{{ item.comment }}</v-card-actions>
             </v-card>
           </v-hover>
