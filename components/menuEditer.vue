@@ -127,8 +127,8 @@ export default {
           if (!v || v.trim() === '') {
             return '名称を入力して下さい。'
           }
-          if (v.length > 20) {
-            return '名称は20文字以内で入力してください。。'
+          if (v.length > 30) {
+            return '名称は30文字以内で入力してください。。'
           }
           return true
         }
