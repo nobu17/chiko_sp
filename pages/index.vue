@@ -100,11 +100,19 @@
           <h3 class="article_title stripe">Access</h3>
         </v-card-title>
         <v-card-text>
-          <p>{{ description }}</p>
+          <p
+            :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
+          >{{ description }}</p>
         </v-card-text>
       </v-card>
       <v-flex class xs12>
         <div class="ggmap" v-html="mapurl" />
+      </v-flex>
+      <v-flex class xs12>
+        <p
+          :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
+        >駐車場情報</p>
+        <v-img :src="parkin_img" />
       </v-flex>
     </v-flex>
   </v-layout>
@@ -124,6 +132,7 @@ export default {
     return {
       topimage: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
       top_image_src: require('~/assets/img/top.jpg'),
+      parkin_img: require('~/assets/img/parking.png'),
       news: [],
       isLoadingNews: true,
       img2: 'https://picsum.photos/500/300?image=3',
