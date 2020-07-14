@@ -86,6 +86,11 @@ export default {
           link: 'https://ameblo.jp/makimabo592'
         },
         {
+          title: 'insta',
+          icon: 'camera',
+          link: 'https://www.instagram.com/pochiko592/'
+        },
+        {
           title: 'admin page',
           icon: 'lock',
           link: '/admin',

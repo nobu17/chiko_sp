@@ -42,10 +42,30 @@
         </v-card-text>
       </v-card>
     </v-flex>
-    <v-flex xs12>
+    <v-flex md6 xs12>
       <v-card class="elevation-0 transparent">
         <v-card-title class="justify-center">
-          <h3 class="article_title stripe">News</h3>
+          <h3 class="article_title stripe">Insta</h3>
+        </v-card-title>
+        <v-card-text>
+          <div
+            id="insta-window"
+            class="iswd-base"
+            data-username="pochiko592"
+            data-display-image-count="6"
+            data-wrapper-width
+            data-show-biography="false"
+            data-show-follow-btn="false"
+            data-show-username="false"
+          ></div>
+          <script src="https://insta-window-tool.web.app/v2/insta-window.js"></script>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex md6 xs12>
+      <v-card class="elevation-0 transparent">
+        <v-card-title class="justify-center">
+          <h3 class="article_title stripe">Blog</h3>
         </v-card-title>
         <v-card-text>
           <LoadingPartialScreen :isLoading="isLoadingNews" />
@@ -158,8 +178,8 @@ export default {
       this.isLoadingNews = true
       const client = new RssClinet()
       let news = await client.readRssAsync()
-      if (news && news.length > 5) {
-        news = news.slice(0, 5)
+      if (news && news.length > 7) {
+        news = news.slice(0, 7)
       }
       this.news = news
       this.isLoadingNews = false
