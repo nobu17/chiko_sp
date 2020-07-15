@@ -20,7 +20,7 @@ Vue.filter('yenFilter', value => {
   if (!value || typeof value !== 'string') {
     return value
   }
-  return value + '円'
+  return '¥ ' + value
 })
 
 Vue.filter('isoDateFilter', value => {
