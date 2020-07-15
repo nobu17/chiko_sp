@@ -24,22 +24,22 @@
           <v-hover>
             <v-card
               slot-scope="{ hover }"
-              :class="`ma-2 transparent elevation-${hover ? 12 : 0}`"
+              :class="`ma-2 transparent elevation-${hover ? 12 : 1}`"
               @click="showMenu(item)"
             >
               <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="1.3" />
               <v-card-title primary-title>
+                <v-flex xs12>
+                  <div class="my_headline">{{ item.name }}</div>
+                </v-flex>
                 <v-flex xs8>
-                  <div class="headline">{{ item.name }}</div>
+                  <span>{{ item.comment }}</span>
                 </v-flex>
                 <v-flex xs4>
                   <div
-                    class="headline"
+                    class="my_headline"
                     style="text-align:right;"
                   >{{ item.price | commaFilter | yenFilter }}</div>
-                </v-flex>
-                <v-flex xs12>
-                  <span>{{ item.comment }}</span>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -63,22 +63,22 @@
           <v-hover>
             <v-card
               slot-scope="{ hover }"
-              :class="`ma-2 transparent elevation-${hover ? 12 : 0}`"
+              :class="`ma-2 transparent elevation-${hover ? 12 : 1}`"
               @click="showMenu(item)"
             >
               <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="1.3" />
               <v-card-title primary-title>
+                <v-flex xs12>
+                  <div class="my_headline">{{ item.name }}</div>
+                </v-flex>
                 <v-flex xs8>
-                  <div class="headline">{{ item.name }}</div>
+                  <span>{{ item.comment }}</span>
                 </v-flex>
                 <v-flex xs4>
                   <div
-                    class="headline"
+                    class="my_headline"
                     style="text-align:right;"
                   >{{ item.price | commaFilter | yenFilter }}</div>
-                </v-flex>
-                <v-flex xs12>
-                  <span>{{ item.comment }}</span>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -102,22 +102,22 @@
           <v-hover>
             <v-card
               slot-scope="{ hover }"
-              :class="`ma-2 transparent elevation-${hover ? 12 : 0}`"
+              :class="`ma-2 transparent elevation-${hover ? 12 : 1}`"
               @click="showMenu(item)"
             >
               <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="1.3" />
               <v-card-title primary-title>
+                <v-flex xs12>
+                  <div class="my_headline">{{ item.name }}</div>
+                </v-flex>
                 <v-flex xs8>
-                  <div class="headline">{{ item.name }}</div>
+                  <span>{{ item.comment }}</span>
                 </v-flex>
                 <v-flex xs4>
                   <div
-                    class="headline"
+                    class="my_headline"
                     style="text-align:right;"
                   >{{ item.price | commaFilter | yenFilter }}</div>
-                </v-flex>
-                <v-flex xs12>
-                  <span>{{ item.comment }}</span>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -140,22 +140,22 @@
           <v-hover>
             <v-card
               slot-scope="{ hover }"
-              :class="`ma-2 transparent elevation-${hover ? 12 : 0}`"
+              :class="`ma-2 transparent elevation-${hover ? 12 : 1}`"
               @click="showMenu(item)"
             >
               <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="1.3" />
               <v-card-title primary-title>
+                <v-flex xs12>
+                  <div class="my_headline">{{ item.name }}</div>
+                </v-flex>
                 <v-flex xs8>
-                  <div class="headline">{{ item.name }}</div>
+                  <span>{{ item.comment }}</span>
                 </v-flex>
                 <v-flex xs4>
                   <div
-                    class="headline"
+                    class="my_headline"
                     style="text-align:right;"
                   >{{ item.price | commaFilter | yenFilter }}</div>
-                </v-flex>
-                <v-flex xs12>
-                  <span>{{ item.comment }}</span>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -287,5 +287,9 @@ export default {
     white 2px,
     white 4px
   );
+}
+.my_headline {
+  letter-spacing: 1px;
+  font-size: 19px;
 }
 </style>
