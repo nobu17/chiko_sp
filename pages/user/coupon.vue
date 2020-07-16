@@ -41,10 +41,10 @@
 </template>
 
 <script>
-import couponDisplayDialog from '~/components/couponDisplayDialog.vue'
 import auth0AuthClient from '../../lib/auth0AuthClient'
 import { FireStoreCouponClient } from '../../lib/firebaseCouponClient'
 import loadingScreen from '../../components/loadingScreen'
+import couponDisplayDialog from '~/components/couponDisplayDialog.vue'
 
 const couponClient = new FireStoreCouponClient()
 

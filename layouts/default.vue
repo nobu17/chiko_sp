@@ -2,7 +2,7 @@
   <v-app>
     <v-toolbar dark app>
       <v-toolbar-title class="headline">
-        <span class="px-2">CHICO★SPICE</span>
+        <span class="px-2" @click="changePage(menu[0])">CHICO★SPICE</span>
       </v-toolbar-title>
       <v-spacer />
       <v-toolbar-items class="hidden-sm-and-down">
@@ -14,7 +14,7 @@
       <v-menu class="hidden-md-and-up">
         <v-toolbar-side-icon slot="activator" />
         <v-list>
-          <v-list-tile v-for="item in filteredMenu" :key="item.title" :to="item.link">
+          <v-list-tile v-for="item in filteredMenu" :key="item.title" @click="changePage(item)">
             <v-list-tile-content>
               <v-list-tile-title>
                 <v-icon class="pr-1">{{ item.icon }}</v-icon>
@@ -80,7 +80,16 @@ export default {
           link: '/user/coupon'
         },
         { title: 'Contact', icon: 'face', link: '/contact' },
-        { title: 'blog', icon: 'beenhere', link: '/blog' },
+        {
+          title: 'blog',
+          icon: 'comment',
+          link: 'https://ameblo.jp/makimabo592'
+        },
+        {
+          title: 'insta',
+          icon: 'camera',
+          link: 'https://www.instagram.com/pochiko592/'
+        },
         {
           title: 'admin page',
           icon: 'lock',
@@ -98,7 +107,12 @@ export default {
   },
   methods: {
     changePage(item) {
-      this.$router.push(item.link)
+      // httpから始まる場合は別タブ
+      if (item.link.startsWith('http')) {
+        window.open(item.link)
+      } else {
+        this.$router.push(item.link)
+      }
     }
   }
 }

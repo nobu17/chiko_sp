@@ -54,7 +54,6 @@ export default {
     }
   },
   mounted() {
-    console.log('value', this.value)
     if (this.value) {
       this.id = this.value.id
       this.beforeImg = this.value.beforeImg
@@ -128,8 +127,8 @@ export default {
           if (!v || v.trim() === '') {
             return '名称を入力して下さい。'
           }
-          if (v.length > 20) {
-            return '名称は20文字以内で入力してください。。'
+          if (v.length > 30) {
+            return '名称は30文字以内で入力してください。。'
           }
           return true
         }
@@ -144,7 +143,7 @@ export default {
       ],
       commentRules: [
         v => {
-          if (v.length > 20) {
+          if (v.length > 50) {
             return '説明は50文字以内で入力してください。。'
           }
           return true

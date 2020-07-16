@@ -1,7 +1,7 @@
 <template>
   <v-layout justify-center align-center wrap>
     <v-flex xs12>
-      <v-img :src="top_image_src" aspect-ratio="1.8" />
+      <v-img :src="top_image_src" aspect-ratio="1.6" />
     </v-flex>
     <v-flex xs12>
       <v-card class="elevation-0 transparent">
@@ -11,10 +11,11 @@
         <v-card-text>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >
-            CHICO★SPICEは静岡県駿東郡函南町で、おいしいカレーやスパイス料理を提供するカフェです。
-          </p>
+          >CHICO★SPICEは静岡県田方郡函南町で、おいしいカレーやスパイス料理を提供するお店です。</p>
         </v-card-text>
+        <v-flex xs12>
+          <v-img :src="t2_img_src" />
+        </v-flex>
       </v-card>
     </v-flex>
     <v-flex xs12>
@@ -25,22 +26,54 @@
         <v-card-text>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >
-            鰹や昆布でとった和風だしをベースとしたスパイスカレー。
-          </p>
+          >鰹や昆布でとった和風だしをベースとしたスパイスカレー。</p>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >
-            島とうがらし、塩、黒糖などの沖縄の調味料を隠し味に使っています。
-          </p>
+          >島とうがらし、塩、黒糖などの沖縄の調味料を隠し味に使っています。</p>
+          <v-flex xs12>
+            <v-img :src="t3_img_src" />
+          </v-flex>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
-          >
-            本を読みながら、お酒を飲みながら、ゆったりとお過ごしください。
-          </p>
+          >本を読みながら、お酒を飲みながら、ゆったりとお過ごしください。</p>
+          <v-flex xs12>
+            <v-img :src="t1_img_src" />
+          </v-flex>
         </v-card-text>
       </v-card>
     </v-flex>
+    <v-flex md6 xs12>
+      <v-card class="elevation-0 transparent">
+        <v-card-title class="justify-center">
+          <h3 class="article_title stripe">Insta</h3>
+        </v-card-title>
+        <v-card-text>
+          <div
+            id="insta-window"
+            class="iswd-base"
+            data-username="pochiko592"
+            data-display-image-count="6"
+            data-wrapper-width
+            data-show-biography="false"
+            data-show-follow-btn="false"
+            data-show-username="false"
+          ></div>
+          <script src="https://insta-window-tool.web.app/v2/insta-window.js"></script>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex md6 xs12>
+      <v-card class="elevation-0 transparent">
+        <v-card-title class="justify-center">
+          <h3 class="article_title stripe">Blog</h3>
+        </v-card-title>
+        <v-card-text>
+          <LoadingPartialScreen :isLoading="isLoadingNews" />
+          <NewsDisplay :items="news" />
+        </v-card-text>
+      </v-card>
+    </v-flex>
+
     <v-flex xs12>
       <v-card xs12 class="elevation-0 transparent">
         <v-card-title class="justify-center">
@@ -54,23 +87,38 @@
               <td>〒419-0123 静岡県田方郡函南町間宮680</td>
             </tr>
             <tr>
-              <td>電話番号：0000-00-0000</td>
+              <td>電話番号：080-6712-2988</td>
+            </tr>
+            <br />
+            <tr>
+              <td>
+                営業時間(日〜木)
+                <br />モーニング:7:00 - 10:00
+                <br />ランチ:11:30 - 15:00
+              </td>
             </tr>
             <tr>
-              <td>ランチタイム：11:00 - 14:30</td>
+              <td>
+                営業時間(金〜土)
+                <br />モーニング:7:00 - 10:00
+                <br />ランチ:11:30 - 15:00
+                <br />ディナー:17:00 - 22:00
+              </td>
             </tr>
-            <tr>
-              <td>ディナータイム：17:00 - 22:00</td>
-            </tr>
-            <tr>
-              <td>定休日：木曜日</td>
-            </tr>
+            <br />
             <tr>
               <td>LINEでお得なクーポンやお知らせを配信しています。友達追加をお願いします。</td>
             </tr>
             <tr>
               <td>
-                <a href="https://line.me/R/ti/p/%40bzp3447p"><img height="36" border="0" alt="友だち追加" src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"></a>
+                <a href="https://line.me/R/ti/p/%40bzp3447p">
+                  <img
+                    height="36"
+                    border="0"
+                    alt="友だち追加"
+                    src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png"
+                  />
+                </a>
               </td>
             </tr>
           </table>
@@ -83,11 +131,19 @@
           <h3 class="article_title stripe">Access</h3>
         </v-card-title>
         <v-card-text>
-          <p>{{ description }}</p>
+          <p
+            :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
+          >{{ description }}</p>
         </v-card-text>
       </v-card>
       <v-flex class xs12>
         <div class="ggmap" v-html="mapurl" />
+      </v-flex>
+      <v-flex class xs12>
+        <p
+          :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
+        >駐車場情報</p>
+        <v-img :src="parkin_img" />
       </v-flex>
     </v-flex>
   </v-layout>
@@ -95,20 +151,43 @@
 
 <script>
 // import Top from '~/assets/img/top.jpg'
-
+import RssClinet from '~/lib/rssClient'
+import LoadingPartialScreen from '~/components/loadingPartialScreen'
+import NewsDisplay from '~/components/newsDisplay'
 export default {
-  components: {},
+  components: {
+    LoadingPartialScreen,
+    NewsDisplay
+  },
   data() {
     return {
       topimage: 'https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg',
+      t1_img_src: require('~/assets/img/ct1.jpg'),
+      t2_img_src: require('~/assets/img/ct2.jpg'),
+      t3_img_src: require('~/assets/img/ct3.jpg'),
       top_image_src: require('~/assets/img/top.jpg'),
+      parkin_img: require('~/assets/img/parking.png'),
+      news: [],
+      isLoadingNews: true,
       img2: 'https://picsum.photos/500/300?image=3',
-      description: '伊豆箱根鉄道大場駅駅徒歩15分。駐車場があります。',
+      description:
+        '伊豆箱根鉄道 大場駅駅:徒歩12分、伊豆仁田駅:徒歩10分。駐車場があります。',
       mapurl:
-        '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3264.8806069678203!2d138.93632851524276!3d35.08471578033757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6019911823f19ee7%3A0x267e733f627c91f0!2z44CSNDE5LTAxMjMg6Z2Z5bKh55yM55Sw5pa56YOh5Ye95Y2X55S66ZaT5a6u77yW77yY77yQ!5e0!3m2!1sja!2sjp!4v1586253628009!5m2!1sja!2sjp" width="800" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'
+        '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3264.883768983908!2d138.93596031524257!3d35.08463678033777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601991c0eac60545%3A0x3b268ab848accfcf!2zQ0hJQ0_imIVTUElDRSjjg4HjgrPjgrnjg5HjgqTjgrkp!5e0!3m2!1sja!2sjp!4v1591486734623!5m2!1sja!2sjp" width="800" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'
     }
   },
-  mounted() {}
+  async mounted() {
+    try {
+      this.isLoadingNews = true
+      const client = new RssClinet()
+      let news = await client.readRssAsync()
+      if (news && news.length > 7) {
+        news = news.slice(0, 7)
+      }
+      this.news = news
+      this.isLoadingNews = false
+    } catch {}
+  }
 }
 </script>
 <style>
