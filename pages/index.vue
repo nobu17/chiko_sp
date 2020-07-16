@@ -171,7 +171,7 @@ export default {
       isLoadingNews: true,
       img2: 'https://picsum.photos/500/300?image=3',
       description:
-        '伊豆箱根鉄道 大場駅駅:徒歩12分、伊豆仁田駅:徒歩10分。駐車場があります。',
+        '伊豆箱根鉄道 大場駅:徒歩12分、伊豆仁田駅:徒歩10分。駐車場があります。',
       mapurl:
         '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3264.883768983908!2d138.93596031524257!3d35.08463678033777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601991c0eac60545%3A0x3b268ab848accfcf!2zQ0hJQ0_imIVTUElDRSjjg4HjgrPjgrnjg5HjgqTjgrkp!5e0!3m2!1sja!2sjp!4v1591486734623!5m2!1sja!2sjp" width="800" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>'
     }
