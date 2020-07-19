@@ -65,6 +65,21 @@
     <v-flex md6 xs12>
       <v-card class="elevation-0 transparent">
         <v-card-title class="justify-center">
+          <h3 class="article_title stripe">Twitter</h3>
+        </v-card-title>
+        <v-card-text>
+          <a
+            class="twitter-timeline"
+            href="https://twitter.com/ChicoSpiceCurry?ref_src=twsrc%5Etfw"
+            data-height="570"
+          >Tweets by (@ChicoSpiceCurry)</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </v-card-text>
+      </v-card>
+    </v-flex>
+    <v-flex xs12>
+      <v-card class="elevation-0 transparent">
+        <v-card-title class="justify-center">
           <h3 class="article_title stripe">Blog</h3>
         </v-card-title>
         <v-card-text>

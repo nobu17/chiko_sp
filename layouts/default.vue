@@ -81,17 +81,22 @@ export default {
         },
         { title: 'Contact', icon: 'face', link: '/contact' },
         {
-          title: 'blog',
+          title: 'Blog',
           icon: 'comment',
           link: 'https://ameblo.jp/makimabo592'
         },
         {
-          title: 'insta',
+          title: 'Twitter',
+          icon: 'cloud',
+          link: 'https://twitter.com/ChicoSpiceCurry'
+        },
+        {
+          title: 'Insta',
           icon: 'camera',
           link: 'https://www.instagram.com/pochiko592/'
         },
         {
-          title: 'admin page',
+          title: 'Admin page',
           icon: 'lock',
           link: '/admin',
           isNeedLogin: true
