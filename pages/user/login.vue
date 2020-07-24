@@ -13,7 +13,7 @@
         </v-flex>
         <v-flex xs12>
           <v-btn v-if="isExistCoupon()" type="button" color="info" @click="login">ログイン</v-btn>
-          <p v-if="!isExistCoupon()">申し訳ございません、ただ今ご利用可能なクーポンはございません。</p>
+          <p v-if="!isExistCoupon()" style="color: red;">申し訳ございません、ただ今ご利用可能なクーポンはございません。配信時にはLINEやトップページの告知を行いますのでよろしくお願いいたします。</p>
         </v-flex>
         <v-flex xs12>
           <v-alert v-if="errorMessage != ''" :value="true" type="error">{{ errorMessage }}</v-alert>
