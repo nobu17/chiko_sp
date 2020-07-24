@@ -42,6 +42,25 @@
         </v-card-text>
       </v-card>
     </v-flex>
+    <v-flex xs12>
+      <v-card class="elevation-0 transparent">
+        <v-card-title class="justify-center">
+          <h3 class="article_title stripe">Promotion</h3>
+        </v-card-title>
+        <v-card-text>
+          <iframe
+            src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fchicospice.jp%2Fposts%2F112615360534335&show_text=true&width=552&height=231&appId"
+            width="100%"
+            height="250"
+            style="border:none;overflow:hidden"
+            scrolling="no"
+            frameborder="0"
+            allowtransparency="true"
+            allow="encrypted-media"
+          ></iframe>
+        </v-card-text>
+      </v-card>
+    </v-flex>
     <v-flex md6 xs12>
       <v-card class="elevation-0 transparent">
         <v-card-title class="justify-center">
@@ -88,7 +107,6 @@
         </v-card-text>
       </v-card>
     </v-flex>
-
     <v-flex xs12>
       <v-card xs12 class="elevation-0 transparent">
         <v-card-title class="justify-center">
