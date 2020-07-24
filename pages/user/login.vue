@@ -12,7 +12,8 @@
           <p>下記のログインボタンからログインを行ってください。ログイン完了後、クーポンの画面へ移動します。</p>
         </v-flex>
         <v-flex xs12>
-          <v-btn type="button" color="info" @click="login">ログイン</v-btn>
+          <v-btn v-if="isExistCoupon()" type="button" color="info" @click="login">ログイン</v-btn>
+          <p v-if="!isExistCoupon()">申し訳ございません、ただ今ご利用可能なクーポンはございません。</p>
         </v-flex>
         <v-flex xs12>
           <v-alert v-if="errorMessage != ''" :value="true" type="error">{{ errorMessage }}</v-alert>
@@ -28,12 +29,17 @@
 <script>
 import auth0AuthClient from '../../lib/auth0AuthClient'
 import loadingScreen from '../../components/loadingScreen'
+import { FireStoreCouponClient } from '../../lib/firebaseCouponClient'
+
+const couponClient = new FireStoreCouponClient()
+
 export default {
   components: {
     loadingScreen
   },
   data() {
     return {
+      couponCount: 0,
       isLoading: false,
       errorMessage: ''
     }
@@ -44,10 +50,12 @@ export default {
     }
   },
   created() {},
-  mounted() {
+  async mounted() {
     if (this.isLogined) {
       this.goNextPage()
+      return
     }
+    this.couponCount = await couponClient.getAvailableCouponsCount()
   },
   methods: {
     async login() {
@@ -74,6 +82,12 @@ export default {
         this.errorMessage =
           'ログイン中にエラーが発生しました。画面をリロードして再度お試し下さい。'
       }
+    },
+    isExistCoupon() {
+      if (this.couponCount > 0) {
+        return true
+      }
+      return false
     },
     goNextPage() {
       const url = this.$route.query.redirect
