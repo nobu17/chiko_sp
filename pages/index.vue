@@ -32,6 +32,7 @@
           >島とうがらし、塩、黒糖などの沖縄の調味料を隠し味に使っています。</p>
           <v-flex xs12>
             <v-img :src="t3_img_src" />
+            </br>
           </v-flex>
           <p
             :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
@@ -125,22 +126,26 @@
             <br />
             <tr>
               <td>
-                木曜日定休日、ディナーは金土のみ営業となります。
+                <strong>定休日：木曜日</strong>
+                <br />
               </td>
             </tr>
             <tr>
               <td>
-                営業時間(日〜水)
+                <strong>営業時間(日〜水)</strong>
                 <br />モーニング:7:00 - 9:30
                 <br />ランチ:11:30 - 15:00 (L.O:14:30)
+                <br />
               </td>
             </tr>
             <tr>
               <td>
-                営業時間(金〜土)
+                <strong>営業時間(金〜土)</strong>
                 <br />モーニング:7:00 - 9:30
                 <br />ランチ:11:30 - 15:00 (L.O:14:30)
                 <br />ディナー:17:30 - 22:00 (L.O:21:30)
+                <br />
+                <strong>※ディナー営業は、金土のみになります。</strong>
               </td>
             </tr>
             <br />
