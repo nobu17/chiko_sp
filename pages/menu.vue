@@ -141,7 +141,7 @@
             <v-card
               slot-scope="{ hover }"
               :class="`ma-2 transparent elevation-${hover ? 12 : 1}`"
-              @click="showMenu(item)"
+              @click="showMenuWithoutTax(item)"
             >
               <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="1.3" />
               <v-card-title primary-title>
@@ -239,6 +239,14 @@ export default {
       })
     },
     showMenu(item) {
+      this.$refs.menudialog.open(
+        item.name,
+        Math.floor(Number(item.price) * 1.1), // add tax
+        item.comment,
+        item.img.fileUrl
+      )
+    },
+    showMenuWithoutTax(item) {
       this.$refs.menudialog.open(
         item.name,
         item.price,
