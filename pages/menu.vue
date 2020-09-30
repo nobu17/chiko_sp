@@ -32,14 +32,14 @@
                 <v-flex xs12>
                   <div class="my_headline">{{ item.name }}</div>
                 </v-flex>
-                <v-flex xs8>
+                <v-flex xs7>
                   <span>{{ item.comment }}</span>
                 </v-flex>
-                <v-flex xs4>
+                <v-flex xs5>
                   <div
                     class="my_headline"
-                    style="text-align:right;"
-                  >{{ item.price | commaFilter | yenFilter }}</div>
+                    style="text-align:right; white-space: pre;"
+                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter | taxInFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -77,8 +77,8 @@
                 <v-flex xs4>
                   <div
                     class="my_headline"
-                    style="text-align:right;"
-                  >{{ item.price | commaFilter | yenFilter }}</div>
+                    style="text-align:right; white-space: pre;"
+                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter | taxInFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -110,14 +110,14 @@
                 <v-flex xs12>
                   <div class="my_headline">{{ item.name }}</div>
                 </v-flex>
-                <v-flex xs8>
+                <v-flex xs7>
                   <span>{{ item.comment }}</span>
                 </v-flex>
-                <v-flex xs4>
+                <v-flex xs5>
                   <div
                     class="my_headline"
-                    style="text-align:right;"
-                  >{{ item.price | commaFilter | yenFilter }}</div>
+                    style="text-align:right; white-space: pre;"
+                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter | taxInFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -154,8 +154,8 @@
                 <v-flex xs4>
                   <div
                     class="my_headline"
-                    style="text-align:right;"
-                  >{{ item.price | commaFilter | yenFilter }}</div>
+                    style="text-align:right; white-space: pre;"
+                  >{{ item.price | commaFilter | yenFilter | taxInFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>

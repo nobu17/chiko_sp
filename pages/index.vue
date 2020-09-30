@@ -188,6 +188,12 @@
         >駐車場情報</p>
         <v-img :src="parkin_img" />
       </v-flex>
+      <v-flex class xs12>
+        <p
+          :class="{'article_content_xs': $vuetify.breakpoint.smAndDown, 'article_content': $vuetify.breakpoint.mdAndUp}"
+        >駐車場情報(2020/09/06 追加)</p>
+        <v-img :src="parkin_img2" />
+      </v-flex>     
     </v-flex>
   </v-layout>
 </template>
@@ -210,6 +216,7 @@ export default {
       t3_img_src: require('~/assets/img/ct3.jpg'),
       top_image_src: require('~/assets/img/top.jpg'),
       parkin_img: require('~/assets/img/parking.png'),
+      parkin_img2: require('~/assets/img/parking2.png'),
       news: [],
       isLoadingNews: true,
       img2: 'https://picsum.photos/500/300?image=3',
