@@ -103,7 +103,7 @@
         </v-card-text>
       </v-card>
     </v-flex>
-    <v-flex xs12>
+    <!-- <v-flex xs12>
       <v-card class="elevation-0 transparent">
         <v-card-title class="justify-center">
           <h3 class="article_title stripe">Blog</h3>
@@ -113,7 +113,7 @@
           <NewsDisplay :items="news" />
         </v-card-text>
       </v-card>
-    </v-flex>
+    </v-flex> -->
     <v-flex xs12>
       <v-card xs12 class="elevation-0 transparent">
         <v-card-title class="justify-center">
