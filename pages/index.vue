@@ -74,17 +74,9 @@
           <h3 class="article_title stripe">Insta</h3>
         </v-card-title>
         <v-card-text>
-          <div
-            id="insta-window"
-            class="iswd-base"
-            data-username="pochiko592"
-            data-display-image-count="6"
-            data-wrapper-width
-            data-show-biography="false"
-            data-show-follow-btn="false"
-            data-show-username="false"
-          ></div>
-          <script src="https://insta-window-tool.web.app/v2/insta-window.js"></script>
+        <!-- SnapWidget -->
+          <script src="https://snapwidget.com/js/snapwidget.js"></script>
+          <iframe src="https://snapwidget.com/embed/926763" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; "></iframe>
         </v-card-text>
       </v-card>
     </v-flex>
