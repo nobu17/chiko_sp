@@ -32,14 +32,14 @@
                 <v-flex xs12>
                   <div class="my_headline">{{ item.name }}</div>
                 </v-flex>
-                <v-flex xs8>
+                <v-flex xs7>
                   <span>{{ item.comment }}</span>
                 </v-flex>
-                <v-flex xs4>
+                <v-flex xs5>
                   <div
                     class="my_headline"
-                    style="text-align:right;"
-                  >{{ item.price | commaFilter | yenFilter }}</div>
+                    style="text-align:right; white-space: pre;"
+                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter | taxInFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -77,8 +77,8 @@
                 <v-flex xs4>
                   <div
                     class="my_headline"
-                    style="text-align:right;"
-                  >{{ item.price | commaFilter | yenFilter }}</div>
+                    style="text-align:right; white-space: pre;"
+                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter | taxInFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -110,14 +110,14 @@
                 <v-flex xs12>
                   <div class="my_headline">{{ item.name }}</div>
                 </v-flex>
-                <v-flex xs8>
+                <v-flex xs7>
                   <span>{{ item.comment }}</span>
                 </v-flex>
-                <v-flex xs4>
+                <v-flex xs5>
                   <div
                     class="my_headline"
-                    style="text-align:right;"
-                  >{{ item.price | commaFilter | yenFilter }}</div>
+                    style="text-align:right; white-space: pre;"
+                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter | taxInFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -141,7 +141,7 @@
             <v-card
               slot-scope="{ hover }"
               :class="`ma-2 transparent elevation-${hover ? 12 : 1}`"
-              @click="showMenu(item)"
+              @click="showMenuWithoutTax(item)"
             >
               <v-img :src="item.img.fileUrl | imageFilter" aspect-ratio="1.3" />
               <v-card-title primary-title>
@@ -154,8 +154,8 @@
                 <v-flex xs4>
                   <div
                     class="my_headline"
-                    style="text-align:right;"
-                  >{{ item.price | commaFilter | yenFilter }}</div>
+                    style="text-align:right; white-space: pre;"
+                  >{{ item.price | commaFilter | yenFilter | taxInFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -239,6 +239,14 @@ export default {
       })
     },
     showMenu(item) {
+      this.$refs.menudialog.open(
+        item.name,
+        Math.floor(Number(item.price) * 1.1), // add tax
+        item.comment,
+        item.img.fileUrl
+      )
+    },
+    showMenuWithoutTax(item) {
       this.$refs.menudialog.open(
         item.name,
         item.price,

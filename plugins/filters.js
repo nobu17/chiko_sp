@@ -23,6 +23,20 @@ Vue.filter('yenFilter', value => {
   return '¥ ' + value
 })
 
+Vue.filter('taxInFilter', value => {
+  if (!value || typeof value !== 'string') {
+    return value
+  }
+  return value + '\n(税込)'
+})
+
+Vue.filter('taxTenPercentFilter', value => {
+  if (!value || typeof value !== 'string' || isNaN(value)) {
+    return value
+  }
+  return Math.floor(Number(value) * 1.1).toString()
+})
+
 Vue.filter('isoDateFilter', value => {
   if (!value || typeof value !== 'string') {
     return value
