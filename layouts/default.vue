@@ -93,7 +93,7 @@ export default {
         {
           title: 'Insta',
           icon: 'camera',
-          link: 'https://www.instagram.com/pochiko592/'
+          link: 'https://www.instagram.com/chicospicecurry/'
         },
         {
           title: 'Admin page',
