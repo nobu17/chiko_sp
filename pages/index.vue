@@ -74,9 +74,15 @@
           <h3 class="article_title stripe">Insta</h3>
         </v-card-title>
         <v-card-text>
-        <!-- SnapWidget -->
+          <!-- SnapWidget -->
           <script src="https://snapwidget.com/js/snapwidget.js"></script>
-          <iframe src="https://snapwidget.com/embed/926763" class="snapwidget-widget" allowtransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden;  width:100%; "></iframe>
+          <iframe 
+          src="https://snapwidget.com/embed/926763" 
+          class="snapwidget-widget" 
+          allowtransparency="true" 
+          frameborder="0" 
+          scrolling="no" 
+          style="border:none; overflow:hidden;  width:100%; "></iframe>
         </v-card-text>
       </v-card>
     </v-flex>
@@ -132,10 +138,10 @@
               <td>
                 <strong>営業時間</strong>
                 <br/>モーニング:7:00 - 9:30 
-                <br/>※火・水・土・日曜日のみ
+                <br/>※モーニングは火・水・土・日曜日のみ
                 <br/>ランチ:11:30 - 15:00 (L.O:14:30)
                 <br/>ディナー:17:30 - 21:00 (L.O:20:30) 
-                <br/>※金・土曜日のみ
+                <br/>※ディナーは金・土曜日のみ
                 <br/>
               </td>
             </tr>
