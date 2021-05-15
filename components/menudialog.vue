@@ -4,7 +4,7 @@
       <v-card>
         <v-card-title>
           <p class="item mr-4">{{ name }}</p>
-          <p class="item">{{ price | commaFilter | yenFilter | taxInFilter }}</p>
+          <p class="item">{{ price | commaFilter | yenFilter }}</p>
         </v-card-title>
         <v-img :src="imagesrc | imageFilter" contain max-height="750" max-widh="800"/>
         <v-card-actions class='item'>{{ message }}</v-card-actions>

@@ -39,7 +39,7 @@
                   <div
                     class="my_headline"
                     style="text-align:right; white-space: pre;"
-                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter | taxInFilter }}</div>
+                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -78,7 +78,7 @@
                   <div
                     class="my_headline"
                     style="text-align:right; white-space: pre;"
-                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter | taxInFilter }}</div>
+                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -117,7 +117,7 @@
                   <div
                     class="my_headline"
                     style="text-align:right; white-space: pre;"
-                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter | taxInFilter }}</div>
+                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -155,7 +155,7 @@
                   <div
                     class="my_headline"
                     style="text-align:right; white-space: pre;"
-                  >{{ item.price | commaFilter | yenFilter | taxInFilter }}</div>
+                  >{{ item.price | commaFilter | yenFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -241,7 +241,7 @@ export default {
     showMenu(item) {
       this.$refs.menudialog.open(
         item.name,
-        Math.floor(Number(item.price) * 1.1), // add tax
+        Math.floor(Number(item.price)),
         item.comment,
         item.img.fileUrl
       )
