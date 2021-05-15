@@ -39,7 +39,7 @@
                   <div
                     class="my_headline"
                     style="text-align:right; white-space: pre;"
-                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter }}</div>
+                  >{{ item.price | commaFilter | yenFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -78,7 +78,7 @@
                   <div
                     class="my_headline"
                     style="text-align:right; white-space: pre;"
-                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter }}</div>
+                  >{{ item.price | commaFilter | yenFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
@@ -117,7 +117,7 @@
                   <div
                     class="my_headline"
                     style="text-align:right; white-space: pre;"
-                  >{{ item.price | taxTenPercentFilter | commaFilter | yenFilter }}</div>
+                  >{{ item.price | commaFilter | yenFilter }}</div>
                 </v-flex>
               </v-card-title>
             </v-card>
