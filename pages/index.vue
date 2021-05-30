@@ -165,6 +165,24 @@
             </tr>
             <br>
             <tr>
+              <td>ネットで来店予約を始めました。是非ご利用ください。</td>
+            </tr>
+            <tr>
+              <td>
+                <v-btn
+                  href="https://nobu17.pythonanywhere.com"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  color="primary"
+                  elevation="2"
+                  x-large
+                >
+                  ネット予約サイト
+                </v-btn>
+              </td>
+            </tr>
+            <br>         
+            <tr>
               <td>LINEでお得なクーポンやお知らせを配信しています。友達追加をお願いします。</td>
             </tr>
             <tr>

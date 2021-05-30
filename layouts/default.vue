@@ -73,7 +73,11 @@ export default {
       menu: [
         { title: 'Top', icon: 'home', link: '/' },
         { title: 'Menu', icon: 'restaurant_menu', link: '/menu' },
-        // { title: 'Access', icon: 'directions_car', link: '/access' },
+        {
+          title: 'Reservation',
+          icon: 'alarm',
+          link: 'https://nobu17.pythonanywhere.com'
+        },
         {
           title: 'Coupon',
           icon: 'beenhere',
