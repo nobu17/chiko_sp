@@ -2,11 +2,11 @@
   <v-container class="mt-0 mb-0">
     <v-layout wrap>
       <v-flex xs12>
-        <v-img :src="fileUrl | imageFilter" height="300" :contain="true"/>
+        <v-img :src="fileUrl | imageFilter" height="300" :contain="true" />
       </v-flex>
       <v-flex xs12>
         <ResizableImageInput
-          :imageName="fileName"
+          :image-name="fileName"
           @resized="resizeFinish"
           @disabledChanged="disabledChanged"
         />
@@ -30,11 +30,11 @@ export default {
       required: true
     }
   },
-  mounted() {},
-  computed: {},
   data() {
     return {}
   },
+  computed: {},
+  mounted() {},
   methods: {
     // ボタンの有効状態の切り替わり
     disabledChanged(disabled) {

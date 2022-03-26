@@ -1,8 +1,8 @@
 <template>
   <div>
     <input
-      style="display: none"
       ref="input"
+      style="display: none"
       type="file"
       color="info"
       accept="image/jpeg, image/jpg, image/png"
@@ -12,13 +12,13 @@
     <v-container class="mt-0 mb-0">
       <v-layout wrap>
         <v-flex xs12 md3>
-          <v-btn color="info" @click="pickFile" :disabled="disabled">アップロード</v-btn>
+          <v-btn color="info" :disabled="disabled" @click="pickFile">アップロード</v-btn>
         </v-flex>
         <v-flex xs12 md9>
-          <v-text-field label="アップロードボタンを押下してください。" readonly v-model="imageName"></v-text-field>
+          <v-text-field v-model="imageName" label="アップロードボタンを押下してください。" readonly />
         </v-flex>
-        <v-flex xs3 md3 v-if="canDelete">
-          <v-btn outline fab color="red" @click="deleteClicked" :disabled="disabled">
+        <v-flex v-if="canDelete" xs3 md3>
+          <v-btn outline fab color="red" :disabled="disabled" @click="deleteClicked">
             <v-icon>delete_forever</v-icon>
           </v-btn>
         </v-flex>
@@ -41,12 +41,12 @@ export default {
       default: false
     }
   },
-  mounted() {},
   data() {
     return {
       disabled: false
     }
   },
+  mounted() {},
 
   methods: {
     pickFile() {
@@ -56,6 +56,7 @@ export default {
       this.$emit('deleteClicked')
     },
     async fileUpload() {
+      console.log('fileUpload', this.$refs.input.files[0])
       this.disabled = true
       this.$emit('disabledChanged', this.disabled)
       const file = this.$refs.input.files[0]

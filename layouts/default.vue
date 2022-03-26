@@ -81,7 +81,7 @@ export default {
         {
           title: 'Coupon',
           icon: 'beenhere',
-          link: '/user/coupon'
+          link: '/imagecoupon'
         },
         { title: 'Contact', icon: 'face', link: '/contact' },
         {

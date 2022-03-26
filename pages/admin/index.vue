@@ -19,7 +19,9 @@
                 </v-list-tile-avatar>
                 <v-list-tile-content
                   :class="{'menuTitle_xs': $vuetify.breakpoint.smAndDown, 'menuTitle': $vuetify.breakpoint.mdAndUp}"
-                >{{menu.text}}</v-list-tile-content>
+                >
+                  {{ menu.text }}
+                </v-list-tile-content>
               </v-list-tile>
             </template>
           </v-list>
@@ -38,7 +40,9 @@
                 </v-list-tile-avatar>
                 <v-list-tile-content
                   :class="{'menuTitle_xs': $vuetify.breakpoint.smAndDown, 'menuTitle': $vuetify.breakpoint.mdAndUp}"
-                >{{menu.text}}</v-list-tile-content>
+                >
+                  {{ menu.text }}
+                </v-list-tile-content>
               </v-list-tile>
             </template>
           </v-list>
@@ -57,7 +61,30 @@
                 </v-list-tile-avatar>
                 <v-list-tile-content
                   :class="{'menuTitle_xs': $vuetify.breakpoint.smAndDown, 'menuTitle': $vuetify.breakpoint.mdAndUp}"
-                >{{menu.text}}</v-list-tile-content>
+                >
+                  {{ menu.text }}
+                </v-list-tile-content>
+              </v-list-tile>
+            </template>
+          </v-list>
+        </ul>
+      </v-flex>
+      <v-flex xs12>
+        <label class="menuTitle">クーポン編集(LINE)</label>
+      </v-flex>
+      <v-flex xs12>
+        <ul>
+          <v-list>
+            <template v-for="menu in menuList4">
+              <v-list-tile :key="menu.link" @click="changePage(menu.link)">
+                <v-list-tile-avatar>
+                  <v-icon>{{ menu.icon }}</v-icon>
+                </v-list-tile-avatar>
+                <v-list-tile-content
+                  :class="{'menuTitle_xs': $vuetify.breakpoint.smAndDown, 'menuTitle': $vuetify.breakpoint.mdAndUp}"
+                >
+                  {{ menu.text }}
+                </v-list-tile-content>
               </v-list-tile>
             </template>
           </v-list>
@@ -75,14 +102,6 @@ export default {
   head() {
     return {
       title: '管理'
-    }
-  },
-  methods: {
-    changePage(url) {
-      if (!url || url === '') {
-        url = '/admin'
-      }
-      this.$router.push(url)
     }
   },
   data() {
@@ -147,7 +166,22 @@ export default {
           icon: 'info',
           link: '/admin/couponstatistic/coupon_user'
         }
+      ],
+      menuList4: [
+        {
+          text: 'LINEクーポン編集',
+          icon: 'info',
+          link: '/admin/editimagecoupons/'
+        }
       ]
+    }
+  },
+  methods: {
+    changePage(url) {
+      if (!url || url === '') {
+        url = '/admin'
+      }
+      this.$router.push(url)
     }
   }
 }
