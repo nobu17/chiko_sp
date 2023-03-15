@@ -76,7 +76,7 @@ export default {
         {
           title: 'Reservation',
           icon: 'alarm',
-          link: 'https://nobu17.pythonanywhere.com'
+          link: 'https://chicotakeout.fly.dev'
         },
         {
           title: 'Coupon',

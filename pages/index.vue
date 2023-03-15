@@ -165,19 +165,19 @@
             </tr>
             <br>
             <tr>
-              <td>ネットで来店予約を始めました。是非ご利用ください。</td>
+              <td>ネットでイートインとテイクアウト予約を始めました。是非ご利用ください。</td>
             </tr>
             <tr>
               <td>
                 <v-btn
-                  href="https://nobu17.pythonanywhere.com"
+                  href="https://chicotakeout.fly.dev"
                   target="_blank" 
                   rel="noopener noreferrer"
                   color="primary"
                   elevation="2"
                   x-large
                 >
-                  ネット予約サイト
+                  テイクアウトorイトーイン予約サイト
                 </v-btn>
               </td>
             </tr>

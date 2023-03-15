@@ -19,6 +19,9 @@ $ yarn start
 $ yarn run generate
 ```
 
+# node
+nodebrew use v10.20.1
+
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
 
 ## deploy
